@@ -4,1098 +4,684 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zeituna Lodge — Salento, Puglia</title>
+<link rel="icon" type="image/png" href="https://www.zeitunalodge.it/wp-content/uploads/2023/05/cropped-cropped-cropped-zeituna_lodge_torre_lapillo-270x270.png">
+<link rel="apple-touch-icon" href="https://www.zeitunalodge.it/wp-content/uploads/2023/05/cropped-cropped-cropped-zeituna_lodge_torre_lapillo-270x270.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-:root {
-  --olive-dark: #2C3A2E;
-  --olive: #4A5D3E;
-  --olive-light: #6B7F5E;
-  --sand: #E8DFD0;
-  --sand-light: #F5F0E8;
-  --cream: #FAF8F4;
-  --terracotta: #B8704A;
-  --terracotta-light: #D4956E;
-  --sea: #5A8FA8;
-  --sea-light: #8BB8CC;
-  --charcoal: #2A2A2A;
-  --warm-gray: #6B6560;
-  --white: #FFFFFF;
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body: 'Outfit', sans-serif;
-  --section-padding: clamp(60px, 10vw, 120px);
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+--olive-dark:#2C3A2E;--olive:#4A5D3E;--olive-light:#6B7F5E;
+--sand:#E8DFD0;--sand-light:#F5F0E8;--cream:#FAF8F4;
+--terracotta:#B8704A;--terracotta-light:#D4956E;
+--sea:#5A8FA8;--sea-light:#8BB8CC;
+--charcoal:#2A2A2A;--warm-gray:#6B6560;--white:#FFFFFF;
+--font-display:'Cormorant Garamond',Georgia,serif;
+--font-body:'Outfit',sans-serif;
+--section-padding:clamp(60px,10vw,120px);
 }
-html { scroll-behavior: smooth; }
-body {
-  font-family: var(--font-body);
-  font-weight: 300;
-  color: var(--charcoal);
-  background: var(--cream);
-  line-height: 1.7;
-  overflow-x: hidden;
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);font-weight:300;color:var(--charcoal);background:var(--cream);line-height:1.7;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{text-decoration:none;color:inherit}
+button{border:none;background:none;cursor:pointer;font-family:inherit}
+.container{max-width:1200px;margin:0 auto;padding:0 clamp(20px,5vw,40px)}
+.section-label{font-family:var(--font-body);font-weight:500;font-size:.7rem;letter-spacing:.25em;text-transform:uppercase;color:var(--terracotta);margin-bottom:12px}
+.section-title{font-family:var(--font-display);font-weight:400;font-size:clamp(2rem,4vw,3.2rem);line-height:1.15;color:var(--olive-dark);margin-bottom:20px}
+.section-text{font-size:1rem;color:var(--warm-gray);max-width:600px;line-height:1.8}
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.anim{opacity:0}.anim.visible{animation:fadeUp .8s ease forwards}
+.anim-delay-1{animation-delay:.15s!important}.anim-delay-2{animation-delay:.3s!important}.anim-delay-3{animation-delay:.45s!important}
+.page{display:none}.page.active{display:block}
+.lang-switch{display:flex;align-items:center;gap:2px;background:rgba(255,255,255,.08);border-radius:6px;padding:2px}
+.lang-btn{padding:4px 10px;font-size:.72rem;font-weight:500;letter-spacing:.06em;color:rgba(255,255,255,.5);border-radius:4px;transition:all .25s;cursor:pointer}
+.lang-btn:hover{color:rgba(255,255,255,.85)}.lang-btn.active{background:var(--terracotta);color:var(--white)}
+.top-bar{background:var(--olive-dark);color:rgba(255,255,255,.7);font-size:.78rem;padding:8px 0}
+.top-bar .container{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px}
+.top-bar a{color:rgba(255,255,255,.85);transition:color .3s}.top-bar a:hover{color:var(--terracotta-light)}
+.top-bar-right{display:flex;align-items:center;gap:18px}
+.top-bar-times{display:flex;gap:18px}.top-bar-times span{display:flex;align-items:center;gap:4px}
+header{position:sticky;top:0;z-index:100;background:rgba(250,248,244,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,0,0,.06);transition:box-shadow .3s}
+header.scrolled{box-shadow:0 2px 20px rgba(0,0,0,.08)}
+nav{display:flex;justify-content:space-between;align-items:center;padding:14px clamp(20px,5vw,40px);max-width:1200px;margin:0 auto}
+.logo{display:flex;align-items:center;gap:12px;cursor:pointer}
+.logo-icon{width:44px;height:44px;background:var(--olive);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.logo-icon svg{width:22px;height:22px}
+.logo-text{font-family:var(--font-display);font-size:1.5rem;font-weight:500;color:var(--olive-dark)}
+.logo-text span{display:block;font-family:var(--font-body);font-size:.6rem;font-weight:400;letter-spacing:.2em;text-transform:uppercase;color:var(--warm-gray);margin-top:-2px}
+.nav-links{display:flex;list-style:none;gap:24px;align-items:center}
+.nav-links a{font-size:.84rem;font-weight:400;color:var(--charcoal);position:relative;padding:4px 0;transition:color .3s}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:0;width:0;height:1.5px;background:var(--terracotta);transition:width .3s}
+.nav-links a:hover{color:var(--terracotta)}.nav-links a:hover::after{width:100%}
+.nav-cta{background:var(--olive)!important;color:var(--white)!important;padding:10px 22px!important;border-radius:6px;font-size:.82rem!important;font-weight:500!important;transition:background .3s,transform .2s!important}
+.nav-cta::after{display:none!important}.nav-cta:hover{background:var(--olive-dark)!important;transform:translateY(-1px)}
+.nav-dropdown{position:relative}
+.nav-dropdown-menu{display:none;position:absolute;top:100%;left:0;background:var(--white);border-radius:8px;box-shadow:0 8px 30px rgba(0,0,0,.12);padding:8px 0;min-width:180px;z-index:200}
+.nav-dropdown:hover .nav-dropdown-menu{display:block}
+.nav-dropdown-menu a{display:block;padding:8px 20px;font-size:.82rem;white-space:nowrap}
+.nav-dropdown-menu a::after{display:none}
+.nav-dropdown-menu a:hover{background:var(--sand-light);color:var(--terracotta)}
+.menu-toggle{display:none;flex-direction:column;gap:5px;padding:8px}
+.menu-toggle span{width:24px;height:2px;background:var(--charcoal);border-radius:2px;transition:.3s}
+.hero{position:relative;height:92vh;min-height:500px;display:flex;align-items:flex-end;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-position:center;background-size:cover;background-repeat:no-repeat;transform:scale(1.05);animation:heroZoom 20s ease forwards}
+@keyframes heroZoom{to{transform:scale(1)}}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(44,58,46,.1) 0%,rgba(44,58,46,.2) 40%,rgba(44,58,46,.7) 100%)}
+.hero-content{position:relative;z-index:2;padding:clamp(40px,8vw,80px) clamp(20px,5vw,60px);max-width:700px;animation:fadeUp 1s ease .3s both}
+.hero-label{font-family:var(--font-body);font-size:.7rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--terracotta-light);margin-bottom:16px}
+.hero h1{font-family:var(--font-display);font-size:clamp(2.5rem,6vw,4.5rem);font-weight:300;color:var(--white);line-height:1.1;margin-bottom:20px}
+.hero h1 em{font-style:italic;font-weight:400;color:var(--sand)}
+.hero p{font-size:1.05rem;color:rgba(255,255,255,.8);max-width:480px;line-height:1.7;margin-bottom:32px}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:8px;background:var(--terracotta);color:var(--white);padding:14px 32px;border-radius:6px;font-size:.88rem;font-weight:500;letter-spacing:.04em;transition:background .3s,transform .2s}
+.btn-primary:hover{background:var(--terracotta-light);transform:translateY(-2px)}
+.btn-outline{display:inline-flex;align-items:center;gap:8px;border:1.5px solid rgba(255,255,255,.5);color:var(--white);padding:13px 30px;border-radius:6px;font-size:.88rem;font-weight:400;transition:all .3s}
+.btn-outline:hover{border-color:var(--white);background:rgba(255,255,255,.1)}
+.hero-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:2;display:flex;flex-direction:column;align-items:center;gap:6px;animation:fadeIn 1s ease 1.5s both}
+.hero-scroll span{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(255,255,255,.5),transparent);animation:scrollPulse 2s ease infinite}
+@keyframes scrollPulse{0%,100%{opacity:.3}50%{opacity:1}}
+.features-strip{background:var(--olive-dark)}
+.features-grid{display:grid;grid-template-columns:repeat(6,1fr)}
+.feature-item{padding:28px 16px;text-align:center;border-right:1px solid rgba(255,255,255,.08);transition:background .3s}
+.feature-item:last-child{border-right:none}.feature-item:hover{background:rgba(255,255,255,.04)}
+.feature-icon{font-size:1.5rem;margin-bottom:8px}
+.feature-item p{font-size:.75rem;font-weight:400;color:rgba(255,255,255,.7);letter-spacing:.04em}
+.intro{padding:var(--section-padding) 0}
+.intro-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center}
+.intro-image{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:4/5}
+.intro-image img{width:100%;height:100%;object-fit:cover;transition:transform 6s ease}
+.intro-image:hover img{transform:scale(1.04)}
+.intro-image-accent{position:absolute;bottom:-12px;right:-12px;width:120px;height:120px;border:2px solid var(--terracotta);border-radius:12px;z-index:-1}
+.intro-content{padding:20px 0}.intro-content .section-text{margin-bottom:24px}
+.intro-signature{font-family:var(--font-display);font-size:1.3rem;font-style:italic;color:var(--olive);margin-top:20px}
+.houses{padding:var(--section-padding) 0;background:var(--sand-light)}
+.houses-header{text-align:center;margin-bottom:clamp(40px,6vw,60px)}.houses-header .section-text{margin:0 auto}
+.houses-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.house-card{background:var(--white);border-radius:12px;overflow:hidden;transition:transform .4s,box-shadow .4s;cursor:pointer}
+.house-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,.1)}
+.house-card-img{position:relative;aspect-ratio:16/10;overflow:hidden}
+.house-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 6s ease}
+.house-card:hover .house-card-img img{transform:scale(1.06)}
+.house-badge{position:absolute;top:16px;left:16px;background:rgba(44,58,46,.85);backdrop-filter:blur(8px);color:var(--white);padding:6px 14px;border-radius:20px;font-size:.72rem;font-weight:500}
+.house-card-body{padding:28px}
+.house-card-body h3{font-family:var(--font-display);font-size:1.6rem;font-weight:500;color:var(--olive-dark);margin-bottom:8px}
+.house-meta{display:flex;gap:16px;font-size:.8rem;color:var(--warm-gray);margin-bottom:14px}
+.house-meta span{display:flex;align-items:center;gap:5px}
+.house-card-body>p{font-size:.9rem;color:var(--warm-gray);line-height:1.7;margin-bottom:20px}
+.house-amenities{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.house-amenities span{font-size:.72rem;padding:5px 12px;border-radius:20px;background:var(--sand-light);color:var(--olive);font-weight:400}
+.btn-secondary{display:inline-flex;align-items:center;gap:6px;color:var(--terracotta);font-size:.85rem;font-weight:500;transition:gap .3s}
+.btn-secondary:hover{gap:12px}
+.experience{padding:var(--section-padding) 0}
+.experience-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:clamp(40px,6vw,60px)}
+.exp-card{position:relative;border-radius:12px;overflow:hidden;aspect-ratio:3/4;cursor:pointer}
+.exp-card img{width:100%;height:100%;object-fit:cover;transition:transform 6s ease}
+.exp-card:hover img{transform:scale(1.08)}
+.exp-card-overlay{position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(42,42,42,.8) 100%);display:flex;flex-direction:column;justify-content:flex-end;padding:28px}
+.exp-card-overlay h3{font-family:var(--font-display);font-size:1.5rem;font-weight:500;color:var(--white);margin-bottom:6px}
+.exp-card-overlay p{font-size:.85rem;color:rgba(255,255,255,.7)}
+.story{padding:var(--section-padding) 0;background:var(--olive-dark);color:var(--white);position:relative;overflow:hidden}
+.story::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;border:1px solid rgba(255,255,255,.05);border-radius:50%}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:center}
+.story .section-label{color:var(--terracotta-light)}.story .section-title{color:var(--sand)}
+.story .section-text{color:rgba(255,255,255,.65);max-width:none}
+.story-image{border-radius:12px;overflow:hidden;aspect-ratio:4/5}
+.story-image img{width:100%;height:100%;object-fit:cover}
+.story-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;padding-top:40px;border-top:1px solid rgba(255,255,255,.1)}
+.stat-number{font-family:var(--font-display);font-size:2.2rem;font-weight:300;color:var(--terracotta-light)}
+.stat-label{font-size:.78rem;color:rgba(255,255,255,.5);margin-top:4px}
+.territory{padding:var(--section-padding) 0;background:var(--sand-light)}
+.territory-header{text-align:center;margin-bottom:50px}.territory-header .section-text{margin:0 auto}
+.territory-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.terr-card{background:var(--white);border-radius:12px;overflow:hidden;transition:transform .3s,box-shadow .3s;cursor:pointer}
+.terr-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.terr-card-img{aspect-ratio:4/3;overflow:hidden}
+.terr-card-img img{width:100%;height:100%;object-fit:cover;transition:transform 4s}
+.terr-card:hover .terr-card-img img{transform:scale(1.05)}
+.terr-card-body{padding:24px}
+.terr-card-body h3{font-family:var(--font-display);font-size:1.3rem;font-weight:500;color:var(--olive-dark);margin-bottom:8px}
+.terr-card-body p{font-size:.88rem;color:var(--warm-gray);line-height:1.7}
+.contact{padding:var(--section-padding) 0}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
+.contact-detail{display:flex;align-items:flex-start;gap:16px;margin-bottom:24px}
+.contact-detail-icon{width:44px;height:44px;flex-shrink:0;background:var(--sand);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.contact-detail h4{font-size:.9rem;font-weight:500;color:var(--olive-dark);margin-bottom:2px}
+.contact-detail p{font-size:.88rem;color:var(--warm-gray)}
+.contact-detail a{color:var(--terracotta)}.contact-detail a:hover{text-decoration:underline}
+/* BOOKING FORM */
+.booking-form{background:var(--white);border-radius:12px;padding:36px;box-shadow:0 4px 24px rgba(0,0,0,.06)}
+.booking-form h3{font-family:var(--font-display);font-size:1.6rem;font-weight:500;color:var(--olive-dark);margin-bottom:24px}
+.form-group{margin-bottom:18px}
+.form-group label{display:block;font-size:.82rem;font-weight:500;color:var(--charcoal);margin-bottom:6px}
+.form-group label .req{color:var(--terracotta)}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:11px 14px;border:1.5px solid rgba(0,0,0,.1);border-radius:8px;font-family:var(--font-body);font-size:.9rem;color:var(--charcoal);background:var(--cream);transition:border-color .3s;outline:none}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--olive)}
+.form-group textarea{resize:vertical;min-height:90px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form-check{display:flex;align-items:center;gap:8px;font-size:.82rem;color:var(--warm-gray);margin-bottom:20px}
+.form-check input[type="checkbox"]{width:16px;height:16px;accent-color:var(--olive)}
+.form-success{display:none;text-align:center;padding:40px 20px}
+.form-success .fs-icon{font-size:3rem;margin-bottom:16px}
+.form-success h4{font-family:var(--font-display);font-size:1.5rem;color:var(--olive-dark);margin-bottom:8px}
+.form-success p{font-size:.9rem;color:var(--warm-gray)}
+/* GALLERY PAGE */
+.gallery-page-section{padding:var(--section-padding) 0}
+.gallery-page-header{text-align:center;margin-bottom:40px}
+.gallery-masonry{columns:3;column-gap:16px}
+.gallery-masonry-item{break-inside:avoid;margin-bottom:16px;border-radius:10px;overflow:hidden;cursor:pointer;position:relative}
+.gallery-masonry-item img{width:100%;display:block;transition:transform 4s}
+.gallery-masonry-item:hover img{transform:scale(1.05)}
+/* Lightbox */
+.lightbox{display:none;position:fixed;inset:0;z-index:1000;background:rgba(0,0,0,.92);align-items:center;justify-content:center;flex-direction:column}
+.lightbox.open{display:flex}
+.lightbox img{max-width:90vw;max-height:80vh;border-radius:8px;object-fit:contain}
+.lightbox-close{position:absolute;top:20px;right:24px;color:white;font-size:2rem;cursor:pointer;z-index:1001;background:rgba(255,255,255,.1);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);width:48px;height:48px;background:rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;color:white;cursor:pointer;transition:background .3s}
+.lightbox-nav:hover{background:rgba(255,255,255,.3)}
+.lightbox-prev{left:20px}.lightbox-next{right:20px}
+.lightbox-counter{color:rgba(255,255,255,.6);font-size:.85rem;margin-top:16px}
+/* TERRITORY DETAIL PAGE */
+.terr-detail-body{padding:var(--section-padding) 0}
+.terr-detail-header{margin-bottom:40px}
+.terr-detail-text{font-size:1rem;color:var(--warm-gray);line-height:1.9;max-width:800px;margin-bottom:40px}
+.terr-detail-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:40px}
+.terr-detail-photos img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;cursor:pointer;transition:transform .3s}
+.terr-detail-photos img:hover{transform:scale(1.03)}
+.back-btn{display:inline-flex;align-items:center;gap:8px;color:var(--terracotta);font-size:.88rem;font-weight:500;margin-bottom:30px;cursor:pointer;transition:gap .3s}
+.back-btn:hover{gap:12px}
+/* HOUSE DETAIL */
+.house-hero{position:relative;height:55vh;min-height:350px;display:flex;align-items:flex-end;overflow:hidden}
+.house-hero .hero-bg{animation:heroZoom 20s ease forwards}
+.house-hero .hero-content{max-width:600px}
+.house-hero h1{font-size:clamp(2.2rem,5vw,3.8rem)}
+.house-detail-body{padding:var(--section-padding) 0}
+.house-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(40px,6vw,80px);align-items:start}
+.house-detail-text h2{font-family:var(--font-display);font-size:1.8rem;font-weight:500;color:var(--olive-dark);margin-bottom:20px}
+.house-detail-text p{font-size:.95rem;color:var(--warm-gray);line-height:1.8;margin-bottom:24px}
+.amenity-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:24px}
+.amenity-item{display:flex;align-items:center;gap:10px;font-size:.88rem;color:var(--charcoal);padding:10px 14px;background:var(--sand-light);border-radius:8px}
+.amenity-item .a-icon{font-size:1.1rem;flex-shrink:0}
+.house-gallery{margin-top:20px}
+.gallery-main{border-radius:12px;overflow:hidden;aspect-ratio:4/3;margin-bottom:12px;background:var(--sand);position:relative}
+.gallery-main img{width:100%;height:100%;object-fit:cover;transition:opacity .4s}
+.gallery-nav{position:absolute;top:50%;transform:translateY(-50%);width:42px;height:42px;background:rgba(255,255,255,.85);backdrop-filter:blur(6px);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.2rem;color:var(--charcoal);cursor:pointer;transition:background .3s;z-index:3;border:none}
+.gallery-nav:hover{background:var(--white)}
+.gallery-prev{left:12px}.gallery-next{right:12px}
+.gallery-counter{position:absolute;bottom:14px;right:14px;background:rgba(44,58,46,.8);color:var(--white);padding:4px 12px;border-radius:20px;font-size:.72rem;font-weight:500;z-index:3}
+.gallery-thumbs{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.gallery-thumb{width:72px;height:54px;border-radius:8px;overflow:hidden;cursor:pointer;flex-shrink:0;opacity:.5;transition:opacity .3s;border:2px solid transparent}
+.gallery-thumb.active{opacity:1;border-color:var(--terracotta)}
+.gallery-thumb img{width:100%;height:100%;object-fit:cover}
+.house-info-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.info-card{background:var(--sand-light);border-radius:10px;padding:20px;text-align:center}
+.info-card .ic-icon{font-size:1.6rem;margin-bottom:8px}
+.info-card h4{font-size:.9rem;font-weight:500;color:var(--olive-dark);margin-bottom:4px}
+.info-card p{font-size:.82rem;color:var(--warm-gray)}
+.other-houses{padding:var(--section-padding) 0;background:var(--sand-light)}
+.other-houses-header{text-align:center;margin-bottom:40px}
+.other-houses-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.other-house-card{background:var(--white);border-radius:12px;overflow:hidden;cursor:pointer;transition:transform .3s,box-shadow .3s}
+.other-house-card:hover{transform:translateY(-4px);box-shadow:0 12px 40px rgba(0,0,0,.08)}
+.other-house-card .oh-img{aspect-ratio:16/10;overflow:hidden}
+.other-house-card .oh-img img{width:100%;height:100%;object-fit:cover;transition:transform 4s}
+.other-house-card:hover .oh-img img{transform:scale(1.05)}
+.other-house-card .oh-body{padding:20px}
+.other-house-card .oh-body h3{font-family:var(--font-display);font-size:1.3rem;font-weight:500;color:var(--olive-dark);margin-bottom:4px}
+.other-house-card .oh-body p{font-size:.82rem;color:var(--warm-gray)}
+footer{background:var(--olive-dark);color:rgba(255,255,255,.6);padding:60px 0 30px}
+.footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.footer-brand .logo-text{color:var(--sand)}.footer-brand .logo-text span{color:rgba(255,255,255,.4)}
+.footer-brand p{font-size:.88rem;margin-top:16px;line-height:1.7;max-width:300px}
+.footer-col h4{font-size:.72rem;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:20px}
+.footer-col ul{list-style:none}.footer-col li{margin-bottom:10px}
+.footer-col a{font-size:.88rem;color:rgba(255,255,255,.6);transition:color .3s}.footer-col a:hover{color:var(--terracotta-light)}
+.footer-bottom{border-top:1px solid rgba(255,255,255,.08);padding-top:24px;display:flex;justify-content:space-between;align-items:center;font-size:.78rem}
+.footer-bottom a{color:rgba(255,255,255,.4)}.footer-bottom a:hover{color:var(--terracotta-light)}
+@media(max-width:768px){
+.top-bar .container{flex-direction:column;text-align:center}
+.top-bar-right{flex-direction:column;gap:8px}
+.nav-links{display:none}.menu-toggle{display:flex}
+.nav-links.active{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--cream);padding:24px;gap:16px;box-shadow:0 10px 30px rgba(0,0,0,.1);z-index:200}
+.nav-dropdown-menu{position:static;box-shadow:none;padding-left:16px}
+.hero{height:80vh}.hero h1{font-size:2.2rem}
+.intro-grid,.story-grid,.contact-grid,.house-detail-grid{grid-template-columns:1fr}
+.houses-grid,.experience-grid,.territory-cards,.other-houses-grid{grid-template-columns:1fr}
+.features-grid{grid-template-columns:repeat(3,1fr)}.feature-item{padding:20px 12px}
+.story-image{order:-1}.footer-grid{grid-template-columns:1fr 1fr}
+.house-info-cards,.amenity-grid{grid-template-columns:1fr}
+.gallery-masonry{columns:2}
+.form-row{grid-template-columns:1fr}
+.terr-detail-photos{grid-template-columns:1fr 1fr}
 }
-img { display: block; max-width: 100%; height: auto; }
-a { text-decoration: none; color: inherit; }
-button { border: none; background: none; cursor: pointer; font-family: inherit; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px, 5vw, 40px); }
-.section-label {
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 0.7rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--terracotta);
-  margin-bottom: 12px;
-}
-.section-title {
-  font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  line-height: 1.15;
-  color: var(--olive-dark);
-  margin-bottom: 20px;
-}
-.section-text {
-  font-size: 1rem;
-  color: var(--warm-gray);
-  max-width: 600px;
-  line-height: 1.8;
-}
-
-/* ANIMATIONS */
-@keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
-@keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
-.anim { opacity: 0; }
-.anim.visible { animation: fadeUp 0.8s ease forwards; }
-.anim-delay-1 { animation-delay: 0.15s !important; }
-.anim-delay-2 { animation-delay: 0.3s !important; }
-.anim-delay-3 { animation-delay: 0.45s !important; }
-
-/* LANGUAGE SWITCHER */
-.lang-switch {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  background: rgba(255,255,255,0.08);
-  border-radius: 6px;
-  padding: 2px;
-}
-.lang-btn {
-  padding: 4px 10px;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  color: rgba(255,255,255,0.5);
-  border-radius: 4px;
-  transition: all 0.25s;
-  cursor: pointer;
-}
-.lang-btn:hover { color: rgba(255,255,255,0.85); }
-.lang-btn.active {
-  background: var(--terracotta);
-  color: var(--white);
-}
-
-/* TOP BAR */
-.top-bar {
-  background: var(--olive-dark);
-  color: rgba(255,255,255,0.7);
-  font-size: 0.78rem;
-  padding: 8px 0;
-}
-.top-bar .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.top-bar a { color: rgba(255,255,255,0.85); transition: color 0.3s; }
-.top-bar a:hover { color: var(--terracotta-light); }
-.top-bar-right { display: flex; align-items: center; gap: 18px; }
-.top-bar-times { display: flex; gap: 18px; }
-.top-bar-times span { display: flex; align-items: center; gap: 4px; }
-
-/* HEADER */
-header {
-  position: sticky; top: 0; z-index: 100;
-  background: rgba(250,248,244,0.95);
-  backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(0,0,0,0.06);
-  transition: box-shadow 0.3s;
-}
-header.scrolled { box-shadow: 0 2px 20px rgba(0,0,0,0.08); }
-nav {
-  display: flex; justify-content: space-between; align-items: center;
-  padding: 14px clamp(20px,5vw,40px);
-  max-width: 1200px; margin: 0 auto;
-}
-.logo { display: flex; align-items: center; gap: 12px; }
-.logo-icon {
-  width: 44px; height: 44px; background: var(--olive);
-  border-radius: 50%; display: flex; align-items: center; justify-content: center;
-}
-.logo-icon svg { width: 22px; height: 22px; }
-.logo-text {
-  font-family: var(--font-display); font-size: 1.5rem; font-weight: 500;
-  color: var(--olive-dark); letter-spacing: -0.01em;
-}
-.logo-text span {
-  display: block; font-family: var(--font-body); font-size: 0.6rem;
-  font-weight: 400; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--warm-gray); margin-top: -2px;
-}
-.nav-links { display: flex; list-style: none; gap: 28px; align-items: center; }
-.nav-links a {
-  font-size: 0.84rem; font-weight: 400; color: var(--charcoal);
-  position: relative; padding: 4px 0; transition: color 0.3s;
-}
-.nav-links a::after {
-  content: ''; position: absolute; bottom: -2px; left: 0;
-  width: 0; height: 1.5px; background: var(--terracotta); transition: width 0.3s;
-}
-.nav-links a:hover { color: var(--terracotta); }
-.nav-links a:hover::after { width: 100%; }
-.nav-cta {
-  background: var(--olive) !important; color: var(--white) !important;
-  padding: 10px 22px !important; border-radius: 6px;
-  font-size: 0.82rem !important; font-weight: 500 !important;
-  letter-spacing: 0.04em; transition: background 0.3s, transform 0.2s !important;
-}
-.nav-cta::after { display: none !important; }
-.nav-cta:hover { background: var(--olive-dark) !important; transform: translateY(-1px); }
-.menu-toggle { display: none; flex-direction: column; gap: 5px; padding: 8px; }
-.menu-toggle span { width: 24px; height: 2px; background: var(--charcoal); border-radius: 2px; transition: 0.3s; }
-
-/* HERO */
-.hero {
-  position: relative; height: 92vh; min-height: 500px;
-  display: flex; align-items: flex-end; overflow: hidden;
-}
-.hero-bg {
-  position: absolute; inset: 0;
-  background: url('https://www.zeitunalodge.it/wp-content/uploads/2023/06/MZ6_9655-scaled.jpg') center/cover no-repeat;
-  transform: scale(1.05); animation: heroZoom 20s ease forwards;
-}
-@keyframes heroZoom { to { transform: scale(1); } }
-.hero-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(44,58,46,0.1) 0%, rgba(44,58,46,0.2) 40%, rgba(44,58,46,0.7) 100%);
-}
-.hero-content {
-  position: relative; z-index: 2;
-  padding: clamp(40px,8vw,80px) clamp(20px,5vw,60px);
-  max-width: 700px; animation: fadeUp 1s ease 0.3s both;
-}
-.hero-label {
-  font-family: var(--font-body); font-size: 0.7rem; font-weight: 500;
-  letter-spacing: 0.3em; text-transform: uppercase; color: var(--terracotta-light);
-  margin-bottom: 16px;
-}
-.hero h1 {
-  font-family: var(--font-display); font-size: clamp(2.5rem,6vw,4.5rem);
-  font-weight: 300; color: var(--white); line-height: 1.1; margin-bottom: 20px;
-}
-.hero h1 em { font-style: italic; font-weight: 400; color: var(--sand); }
-.hero p { font-size: 1.05rem; color: rgba(255,255,255,0.8); max-width: 480px; line-height: 1.7; margin-bottom: 32px; }
-.hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
-.btn-primary {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: var(--terracotta); color: var(--white);
-  padding: 14px 32px; border-radius: 6px; font-size: 0.88rem;
-  font-weight: 500; letter-spacing: 0.04em; transition: background 0.3s, transform 0.2s;
-}
-.btn-primary:hover { background: var(--terracotta-light); transform: translateY(-2px); }
-.btn-outline {
-  display: inline-flex; align-items: center; gap: 8px;
-  border: 1.5px solid rgba(255,255,255,0.5); color: var(--white);
-  padding: 13px 30px; border-radius: 6px; font-size: 0.88rem;
-  font-weight: 400; transition: all 0.3s;
-}
-.btn-outline:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
-.hero-scroll {
-  position: absolute; bottom: 28px; left: 50%; transform: translateX(-50%);
-  z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 6px;
-  animation: fadeIn 1s ease 1.5s both;
-}
-.hero-scroll span { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
-.scroll-line {
-  width: 1px; height: 40px;
-  background: linear-gradient(to bottom, rgba(255,255,255,0.5), transparent);
-  animation: scrollPulse 2s ease infinite;
-}
-@keyframes scrollPulse { 0%,100% { opacity:0.3; } 50% { opacity:1; } }
-
-/* FEATURES STRIP */
-.features-strip { background: var(--olive-dark); }
-.features-grid { display: grid; grid-template-columns: repeat(6, 1fr); }
-.feature-item {
-  padding: 28px 16px; text-align: center;
-  border-right: 1px solid rgba(255,255,255,0.08); transition: background 0.3s;
-}
-.feature-item:last-child { border-right: none; }
-.feature-item:hover { background: rgba(255,255,255,0.04); }
-.feature-icon { font-size: 1.5rem; margin-bottom: 8px; }
-.feature-item p { font-size: 0.75rem; font-weight: 400; color: rgba(255,255,255,0.7); letter-spacing: 0.04em; }
-
-/* INTRO */
-.intro { padding: var(--section-padding) 0; }
-.intro-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: clamp(40px,6vw,80px); align-items: center;
-}
-.intro-image {
-  position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 4/5;
-}
-.intro-image img { width: 100%; height: 100%; object-fit: cover; transition: transform 6s ease; }
-.intro-image:hover img { transform: scale(1.04); }
-.intro-image-accent {
-  position: absolute; bottom: -12px; right: -12px;
-  width: 120px; height: 120px; border: 2px solid var(--terracotta);
-  border-radius: 12px; z-index: -1;
-}
-.intro-content { padding: 20px 0; }
-.intro-content .section-text { margin-bottom: 24px; }
-.intro-signature { font-family: var(--font-display); font-size: 1.3rem; font-style: italic; color: var(--olive); margin-top: 20px; }
-
-/* HOUSES */
-.houses { padding: var(--section-padding) 0; background: var(--sand-light); }
-.houses-header { text-align: center; margin-bottom: clamp(40px,6vw,60px); }
-.houses-header .section-text { margin: 0 auto; }
-.houses-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-.house-card {
-  background: var(--white); border-radius: 12px; overflow: hidden;
-  transition: transform 0.4s, box-shadow 0.4s;
-}
-.house-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(0,0,0,0.1); }
-.house-card-img { position: relative; aspect-ratio: 16/10; overflow: hidden; }
-.house-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 6s ease; }
-.house-card:hover .house-card-img img { transform: scale(1.06); }
-.house-badge {
-  position: absolute; top: 16px; left: 16px;
-  background: rgba(44,58,46,0.85); backdrop-filter: blur(8px);
-  color: var(--white); padding: 6px 14px; border-radius: 20px;
-  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em;
-}
-.house-card-body { padding: 28px; }
-.house-card-body h3 {
-  font-family: var(--font-display); font-size: 1.6rem;
-  font-weight: 500; color: var(--olive-dark); margin-bottom: 8px;
-}
-.house-meta { display: flex; gap: 16px; font-size: 0.8rem; color: var(--warm-gray); margin-bottom: 14px; }
-.house-meta span { display: flex; align-items: center; gap: 5px; }
-.house-card-body p { font-size: 0.9rem; color: var(--warm-gray); line-height: 1.7; margin-bottom: 20px; }
-.house-amenities { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
-.house-amenities span {
-  font-size: 0.72rem; padding: 5px 12px; border-radius: 20px;
-  background: var(--sand-light); color: var(--olive); font-weight: 400;
-}
-.btn-secondary {
-  display: inline-flex; align-items: center; gap: 6px;
-  color: var(--terracotta); font-size: 0.85rem; font-weight: 500; transition: gap 0.3s;
-}
-.btn-secondary:hover { gap: 12px; }
-.arrow-icon { transition: transform 0.3s; }
-.btn-secondary:hover .arrow-icon { transform: translateX(3px); }
-
-/* EXPERIENCES */
-.experience { padding: var(--section-padding) 0; }
-.experience-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: clamp(40px,6vw,60px); }
-.exp-card { position: relative; border-radius: 12px; overflow: hidden; aspect-ratio: 3/4; cursor: pointer; }
-.exp-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 6s ease; }
-.exp-card:hover img { transform: scale(1.08); }
-.exp-card-overlay {
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, transparent 40%, rgba(42,42,42,0.8) 100%);
-  display: flex; flex-direction: column; justify-content: flex-end; padding: 28px;
-}
-.exp-card-overlay h3 { font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; color: var(--white); margin-bottom: 6px; }
-.exp-card-overlay p { font-size: 0.85rem; color: rgba(255,255,255,0.7); }
-
-/* STORY */
-.story {
-  padding: var(--section-padding) 0; background: var(--olive-dark);
-  color: var(--white); position: relative; overflow: hidden;
-}
-.story::before {
-  content: ''; position: absolute; top: -100px; right: -100px;
-  width: 400px; height: 400px; border: 1px solid rgba(255,255,255,0.05); border-radius: 50%;
-}
-.story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px,6vw,80px); align-items: center; }
-.story .section-label { color: var(--terracotta-light); }
-.story .section-title { color: var(--sand); }
-.story .section-text { color: rgba(255,255,255,0.65); max-width: none; }
-.story-image { border-radius: 12px; overflow: hidden; aspect-ratio: 4/5; }
-.story-image img { width: 100%; height: 100%; object-fit: cover; }
-.story-stats {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 20px; margin-top: 40px; padding-top: 40px;
-  border-top: 1px solid rgba(255,255,255,0.1);
-}
-.stat-number { font-family: var(--font-display); font-size: 2.2rem; font-weight: 300; color: var(--terracotta-light); }
-.stat-label { font-size: 0.78rem; color: rgba(255,255,255,0.5); margin-top: 4px; }
-
-/* TERRITORY */
-.territory { padding: var(--section-padding) 0; background: var(--sand-light); }
-.territory-header { text-align: center; margin-bottom: 50px; }
-.territory-header .section-text { margin: 0 auto; }
-.territory-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-.terr-card {
-  background: var(--white); border-radius: 12px; padding: 36px 28px; text-align: center;
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.terr-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
-.terr-card-icon {
-  width: 56px; height: 56px; margin: 0 auto 20px; background: var(--sand);
-  border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem;
-}
-.terr-card h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 500; color: var(--olive-dark); margin-bottom: 10px; }
-.terr-card p { font-size: 0.88rem; color: var(--warm-gray); line-height: 1.7; }
-
-/* CONTACT */
-.contact { padding: var(--section-padding) 0; }
-.contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; }
-.contact-info h2 { font-family: var(--font-display); font-size: 2.2rem; font-weight: 400; color: var(--olive-dark); margin-bottom: 24px; }
-.contact-detail { display: flex; align-items: flex-start; gap: 16px; margin-bottom: 24px; }
-.contact-detail-icon {
-  width: 44px; height: 44px; flex-shrink: 0; background: var(--sand);
-  border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem;
-}
-.contact-detail h4 { font-size: 0.9rem; font-weight: 500; color: var(--olive-dark); margin-bottom: 2px; }
-.contact-detail p { font-size: 0.88rem; color: var(--warm-gray); }
-.contact-detail a { color: var(--terracotta); }
-.contact-detail a:hover { text-decoration: underline; }
-.contact-hours {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
-  margin-top: 32px; padding-top: 32px; border-top: 1px solid rgba(0,0,0,0.08);
-}
-.hours-block h4 { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; color: var(--olive); margin-bottom: 6px; }
-.hours-block p { font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; color: var(--charcoal); }
-.map-wrapper { border-radius: 12px; overflow: hidden; aspect-ratio: 1/1; background: var(--sand); }
-.map-wrapper iframe { width: 100%; height: 100%; border: none; }
-
-/* FOOTER */
-footer { background: var(--olive-dark); color: rgba(255,255,255,0.6); padding: 60px 0 30px; }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 40px; }
-.footer-brand .logo-text { color: var(--sand); }
-.footer-brand .logo-text span { color: rgba(255,255,255,0.4); }
-.footer-brand p { font-size: 0.88rem; margin-top: 16px; line-height: 1.7; max-width: 300px; }
-.footer-col h4 {
-  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.2em;
-  text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 20px;
-}
-.footer-col ul { list-style: none; }
-.footer-col li { margin-bottom: 10px; }
-.footer-col a { font-size: 0.88rem; color: rgba(255,255,255,0.6); transition: color 0.3s; }
-.footer-col a:hover { color: var(--terracotta-light); }
-.footer-bottom {
-  border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px;
-  display: flex; justify-content: space-between; align-items: center; font-size: 0.78rem;
-}
-.footer-bottom a { color: rgba(255,255,255,0.4); transition: color 0.3s; }
-.footer-bottom a:hover { color: var(--terracotta-light); }
-
-/* MOBILE */
-@media (max-width: 768px) {
-  .top-bar .container { flex-direction: column; text-align: center; }
-  .top-bar-right { flex-direction: column; gap: 8px; }
-  .nav-links { display: none; }
-  .menu-toggle { display: flex; }
-  .nav-links.active {
-    display: flex; flex-direction: column; position: absolute;
-    top: 100%; left: 0; right: 0; background: var(--cream);
-    padding: 24px; gap: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-  }
-  .hero { height: 80vh; }
-  .hero h1 { font-size: 2.2rem; }
-  .intro-grid, .story-grid, .contact-grid { grid-template-columns: 1fr; }
-  .houses-grid, .experience-grid, .territory-cards { grid-template-columns: 1fr; }
-  .features-grid { grid-template-columns: repeat(3, 1fr); }
-  .feature-item { padding: 20px 12px; }
-  .story-image { order: -1; }
-  .footer-grid { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 480px) {
-  .features-grid { grid-template-columns: repeat(2, 1fr); }
-  .hero-btns { flex-direction: column; }
-  .contact-hours { grid-template-columns: 1fr; }
-}
+@media(max-width:480px){.features-grid{grid-template-columns:repeat(2,1fr)}.hero-btns{flex-direction:column}.gallery-masonry{columns:1}.terr-detail-photos{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 
 <!-- TOP BAR -->
-<div class="top-bar">
-  <div class="container">
-    <div style="display:flex; gap:20px; flex-wrap:wrap; align-items:center;">
-      <a href="tel:+393792604710">📞 +39 379 260 4710</a>
-      <a href="mailto:vmac88@hotmail.com">✉ vmac88@hotmail.com</a>
-    </div>
-    <div class="top-bar-right">
-      <div class="top-bar-times">
-        <span>Check-in: <strong style="color:#fff">15:00 – 20:00</strong></span>
-        <span>Check-out: <strong style="color:#fff">06:00 – 10:00</strong></span>
-      </div>
-      <div class="lang-switch">
-        <button class="lang-btn active" onclick="setLang('it')">IT</button>
-        <button class="lang-btn" onclick="setLang('en')">EN</button>
-        <button class="lang-btn" onclick="setLang('fr')">FR</button>
-      </div>
-    </div>
-  </div>
+<div class="top-bar"><div class="container">
+<div style="display:flex;gap:20px;flex-wrap:wrap;align-items:center">
+<a href="tel:+393792604710">📞 +39 379 260 4710</a>
+<a href="mailto:vmac88@hotmail.com">✉ vmac88@hotmail.com</a>
 </div>
+<div class="top-bar-right">
+<div class="top-bar-times"><span>Check-in: <strong style="color:#fff">15:00–20:00</strong></span><span>Check-out: <strong style="color:#fff">06:00–10:00</strong></span></div>
+<div class="lang-switch">
+<button class="lang-btn active" onclick="setLang('it')">IT</button>
+<button class="lang-btn" onclick="setLang('en')">EN</button>
+<button class="lang-btn" onclick="setLang('fr')">FR</button>
+</div>
+</div>
+</div></div>
 
 <!-- HEADER -->
-<header id="header">
-  <nav>
-    <a href="#" class="logo">
-      <div class="logo-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5">
-          <path d="M12 3c-4 4-7 8-7 12a7 7 0 0014 0c0-4-3-8-7-12z"/>
-          <path d="M12 8v10M9 13c1.5 1 4.5 1 6 0"/>
-        </svg>
-      </div>
-      <div class="logo-text">
-        Zeituna Lodge
-        <span>Torre Lapillo · Salento</span>
-      </div>
-    </a>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#home" data-i18n="nav_home">Home</a></li>
-      <li><a href="#about" data-i18n="nav_about">La Struttura</a></li>
-      <li><a href="#houses" data-i18n="nav_houses">Le Case</a></li>
-      <li><a href="#experiences" data-i18n="nav_exp">Esperienze</a></li>
-      <li><a href="#territory" data-i18n="nav_territory">Il Territorio</a></li>
-      <li><a href="#contact" data-i18n="nav_contact">Contatti</a></li>
-      <li><a href="#contact" class="nav-cta" data-i18n="nav_cta">Prenota Ora</a></li>
-    </ul>
-    <button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-</header>
+<header id="header"><nav>
+<div class="logo" onclick="goHome()">
+<div class="logo-icon"><svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5"><path d="M12 3c-4 4-7 8-7 12a7 7 0 0014 0c0-4-3-8-7-12z"/><path d="M12 8v10M9 13c1.5 1 4.5 1 6 0"/></svg></div>
+<div class="logo-text">Zeituna Lodge<span>Torre Lapillo · Salento</span></div>
+</div>
+<ul class="nav-links" id="navLinks">
+<li><a href="#" onclick="goHome();return false" data-i18n="nav_home">Home</a></li>
+<li><a href="#" onclick="scrollToSection('about');return false" data-i18n="nav_about">La Struttura</a></li>
+<li class="nav-dropdown">
+<a href="#" onclick="scrollToSection('houses');return false" data-i18n="nav_houses">Le Case ▾</a>
+<div class="nav-dropdown-menu">
+<a href="#" onclick="showHouse('favolosa');return false">Casa Favolosa</a>
+<a href="#" onclick="showHouse('carolea');return false">Casa Carolea</a>
+<a href="#" onclick="showHouse('cellina');return false">Casa Cellina</a>
+<a href="#" onclick="showHouse('olea');return false">Casa Olea</a>
+</div>
+</li>
+<li><a href="#" onclick="showPage('gallery');return false" data-i18n="nav_gallery">Gallery</a></li>
+<li><a href="#" onclick="showPage('territory');return false" data-i18n="nav_territory">Il Territorio</a></li>
+<li><a href="#" onclick="scrollToSection('contact');return false" data-i18n="nav_contact">Contatti</a></li>
+<li><a href="#" onclick="scrollToSection('contact');return false" class="nav-cta" data-i18n="nav_cta">Prenota Ora</a></li>
+</ul>
+<button class="menu-toggle" onclick="document.getElementById('navLinks').classList.toggle('active')" aria-label="Menu"><span></span><span></span><span></span></button>
+</nav></header>
 
-<!-- HERO -->
+<!-- ════════════════ PAGE: HOME ════════════════ -->
+<div class="page active" id="page-home">
+
 <section class="hero" id="home">
-  <div class="hero-bg"></div>
-  <div class="hero-overlay"></div>
-  <div class="hero-content">
-    <div class="hero-label">Porto Cesareo · Salento · Puglia</div>
-    <h1 data-i18n-html="hero_title">Dove la <em>natura</em> incontra il <em>comfort</em></h1>
-    <p data-i18n="hero_text">Immersi tra ulivi secolari e a pochi passi dal mare, le nostre case offrono un rifugio di pace nel cuore del Salento.</p>
-    <div class="hero-btns">
-      <a href="#houses" class="btn-primary" data-i18n="hero_btn1">Scopri le Case →</a>
-      <a href="#about" class="btn-outline" data-i18n="hero_btn2">La Nostra Storia</a>
-    </div>
-  </div>
-  <div class="hero-scroll">
-    <span data-i18n="hero_scroll">Scopri</span>
-    <div class="scroll-line"></div>
-  </div>
+<div class="hero-bg" style="background-image:url('https://www.zeitunalodge.it/wp-content/uploads/2023/06/MZ6_9655-scaled.jpg')"></div>
+<div class="hero-overlay"></div>
+<div class="hero-content">
+<div class="hero-label">Porto Cesareo · Salento · Puglia</div>
+<h1 data-i18n-html="hero_title">Dove la <em>natura</em> incontra il <em>comfort</em></h1>
+<p data-i18n="hero_text">Immersi tra ulivi secolari e a pochi passi dal mare, le nostre case offrono un rifugio di pace nel cuore del Salento.</p>
+<div class="hero-btns">
+<a href="#" class="btn-primary" data-i18n="hero_btn1" onclick="event.preventDefault();document.getElementById('houses').scrollIntoView({behavior:'smooth'})">Scopri le Case →</a>
+<a href="#" class="btn-outline" data-i18n="hero_btn2" onclick="event.preventDefault();document.getElementById('about').scrollIntoView({behavior:'smooth'})">La Nostra Storia</a>
+</div>
+</div>
+<div class="hero-scroll"><span data-i18n="hero_scroll">Scopri</span><div class="scroll-line"></div></div>
 </section>
 
-<!-- FEATURES STRIP -->
-<div class="features-strip">
-  <div class="features-grid">
-    <div class="feature-item"><div class="feature-icon">🅿️</div><p data-i18n="feat_parking">Parcheggio Gratuito</p></div>
-    <div class="feature-item"><div class="feature-icon">📶</div><p data-i18n="feat_wifi">Wi-Fi Gratuito</p></div>
-    <div class="feature-item"><div class="feature-icon">🌿</div><p data-i18n="feat_green">Ampio Spazio Verde</p></div>
-    <div class="feature-item"><div class="feature-icon">🛁</div><p data-i18n="feat_jacuzzi">Jacuzzi Esterna</p></div>
-    <div class="feature-item"><div class="feature-icon">🚐</div><p data-i18n="feat_shuttle">Navetta Aeroporto</p></div>
-    <div class="feature-item"><div class="feature-icon">🚴</div><p data-i18n="feat_bike">Pista Bike Cross</p></div>
-  </div>
+<div class="features-strip"><div class="features-grid">
+<div class="feature-item"><div class="feature-icon">🅿️</div><p data-i18n="feat_parking">Parcheggio Gratuito</p></div>
+<div class="feature-item"><div class="feature-icon">📶</div><p data-i18n="feat_wifi">Wi-Fi Gratuito</p></div>
+<div class="feature-item"><div class="feature-icon">🌿</div><p data-i18n="feat_green">Ampio Spazio Verde</p></div>
+<div class="feature-item"><div class="feature-icon">🛁</div><p data-i18n="feat_jacuzzi">Jacuzzi Esterna</p></div>
+<div class="feature-item"><div class="feature-icon">🚐</div><p data-i18n="feat_shuttle">Navetta Aeroporto</p></div>
+<div class="feature-item"><div class="feature-icon">🚴</div><p data-i18n="feat_bike">Pista Bike Cross</p></div>
+</div></div>
+
+<section class="intro" id="about"><div class="container"><div class="intro-grid">
+<div class="intro-image anim"><img src="https://www.zeitunalodge.it/wp-content/uploads/2025/06/20250504_115832-scaled.jpg" alt="Zeituna Lodge" loading="lazy"><div class="intro-image-accent"></div></div>
+<div class="intro-content anim anim-delay-1">
+<div class="section-label" data-i18n="about_label">La Nostra Storia</div>
+<h2 class="section-title" data-i18n="about_title">Dalla Francia al Salento, tra mare, vento e ulivi</h2>
+<p class="section-text" data-i18n="about_text1">Ingegnere edile di formazione, ho lavorato per anni in Francia progettando case pensate per l'armonia. Un viaggio in Puglia ha cambiato tutto.</p>
+<p class="section-text" style="margin-top:14px" data-i18n="about_text2">Ogni casa è stata progettata con cura: materiali naturali, colori del paesaggio, privacy e dettagli che fanno la differenza.</p>
+<div class="intro-signature" data-i18n="about_sig">— Il Fondatore</div>
+</div>
+</div></div></section>
+
+<section class="houses" id="houses"><div class="container">
+<div class="houses-header anim"><div class="section-label" data-i18n="houses_label">Alloggi</div><h2 class="section-title" data-i18n="houses_title">Le Case di Zeituna Lodge</h2><p class="section-text" data-i18n="houses_text">Di recente costruzione e dotate di tutti i comfort.</p></div>
+<div class="houses-grid">
+<div class="house-card anim" onclick="showHouse('favolosa')"><div class="house-card-img"><img src="https://www.zeitunalodge.it/wp-content/uploads/2025/12/20251123_144207-scaled.jpg" alt="Casa Favolosa" loading="lazy"><div class="house-badge" data-i18n="badge_pool">Vasca Privata</div></div><div class="house-card-body"><h3>Casa Favolosa</h3><div class="house-meta"><span>📐 35 m²</span><span data-i18n="guests_4">👥 Fino a 4</span></div><p data-i18n="casa_fav_short">Camera matrimoniale, cucina attrezzata, vasca esclusiva 2×2.</p><span class="btn-secondary" data-i18n="btn_more">Scopri di più →</span></div></div>
+<div class="house-card anim anim-delay-1" onclick="showHouse('cellina')"><div class="house-card-img"><img src="https://www.zeitunalodge.it/wp-content/uploads/2025/06/20240615_104417-scaled.jpg" alt="Casa Cellina" loading="lazy"><div class="house-badge" data-i18n="badge_largest">La Più Grande</div></div><div class="house-card-body"><h3>Casa Cellina</h3><div class="house-meta"><span>📐 65 m²</span><span data-i18n="guests_6">👥 Fino a 6</span></div><p data-i18n="casa_cel_short">Due camere, due bagni, ampia veranda con gazebo.</p><span class="btn-secondary" data-i18n="btn_more">Scopri di più →</span></div></div>
+<div class="house-card anim anim-delay-2" onclick="showHouse('carolea')"><div class="house-card-img"><img src="https://www.zeitunalodge.it/wp-content/uploads/2025/12/20251202_141425-scaled.jpg" alt="Casa Carolea" loading="lazy"><div class="house-badge" data-i18n="badge_modern">Comfort Moderno</div></div><div class="house-card-body"><h3>Casa Carolea</h3><div class="house-meta"><span>📐 40 m²</span><span data-i18n="guests_6">👥 Fino a 6</span></div><p data-i18n="casa_car_short">Arredo moderno, terrazza con giardino esclusivo.</p><span class="btn-secondary" data-i18n="btn_more">Scopri di più →</span></div></div>
+<div class="house-card anim anim-delay-3" onclick="showHouse('olea')"><div class="house-card-img"><img src="https://www.zeitunalodge.it/wp-content/uploads/2025/12/MRZ_6236.jpg" alt="Casa Olea" loading="lazy"><div class="house-badge" data-i18n="badge_olives">Tra gli Ulivi</div></div><div class="house-card-body"><h3>Casa Olea</h3><div class="house-meta"><span>📐 35 m²</span><span data-i18n="guests_4">👥 Fino a 4</span></div><p data-i18n="casa_olea_short">Intima e raccolta, immersa nell'uliveto.</p><span class="btn-secondary" data-i18n="btn_more">Scopri di più →</span></div></div>
+</div>
+</div></section>
+
+<section class="experience" id="experiences"><div class="container">
+<div class="anim"><div class="section-label" data-i18n="exp_label">Esperienze</div><h2 class="section-title" data-i18n="exp_title">Attività uniche con esperti del luogo</h2></div>
+<div class="experience-grid">
+<div class="exp-card anim"><img src="https://www.zeitunalodge.it/wp-content/uploads/2023/06/esperienza_salento_open_boat_vivi_salento-667x445-1-300x200.jpg" alt="Boat" loading="lazy"><div class="exp-card-overlay"><h3 data-i18n="exp_boat">Escursioni in Barca</h3><p data-i18n="exp_boat_desc">Scopri le calette e le grotte del litorale.</p></div></div>
+<div class="exp-card anim anim-delay-1"><img src="https://www.zeitunalodge.it/wp-content/uploads/2023/06/escursione-bici-salento-porto-cesareo-300x200.jpg" alt="Bike" loading="lazy"><div class="exp-card-overlay"><h3 data-i18n="exp_bike">Escursioni in Bici</h3><p data-i18n="exp_bike_desc">Pedalate tra masserie e panorami mozzafiato.</p></div></div>
+<div class="exp-card anim anim-delay-2"><img src="https://www.zeitunalodge.it/wp-content/uploads/2023/06/esperienza_corso_cucina_salento_4-300x200.jpg" alt="Cooking" loading="lazy"><div class="exp-card-overlay"><h3 data-i18n="exp_cook">Corso di Cucina</h3><p data-i18n="exp_cook_desc">I segreti della cucina salentina con chef esperti.</p></div></div>
+</div>
+</div></section>
+
+<section class="story"><div class="container"><div class="story-grid">
+<div class="anim">
+<div class="section-label" data-i18n="why_label">Perché Scegliere Noi</div>
+<h2 class="section-title" data-i18n="why_title">Natura, comfort e mare</h2>
+<p class="section-text" data-i18n="why_text1">Nel cuore della campagna salentina, a soli tre chilometri dal mare.</p>
+<div class="story-stats">
+<div><div class="stat-number">3 km</div><div class="stat-label" data-i18n="stat_sea">Dal mare</div></div>
+<div><div class="stat-number">3 ha</div><div class="stat-label" data-i18n="stat_land">Di terreno verde</div></div>
+<div><div class="stat-number">4</div><div class="stat-label" data-i18n="stat_houses">Case indipendenti</div></div>
+</div>
+</div>
+<div class="story-image anim anim-delay-1"><img src="https://www.zeitunalodge.it/wp-content/uploads/2025/06/20240612_142204-scaled.jpg" alt="Salento" loading="lazy"></div>
+</div></div></section>
+
+<!-- CONTACT WITH BOOKING FORM -->
+<section class="contact" id="contact"><div class="container"><div class="contact-grid">
+<div class="anim">
+<div class="section-label" data-i18n="contact_label">Contatti</div>
+<h2 style="font-family:var(--font-display);font-size:2.2rem;font-weight:400;color:var(--olive-dark);margin-bottom:24px" data-i18n="contact_title">Vieni a trovarci</h2>
+<div class="contact-detail"><div class="contact-detail-icon">📍</div><div><h4 data-i18n="contact_address">Indirizzo</h4><p>Strada Santa Chiara d'Arneo, 62<br>Hamlet of Nardò (LE), Puglia, Italia</p></div></div>
+<div class="contact-detail"><div class="contact-detail-icon">📞</div><div><h4 data-i18n="contact_phone">Telefono</h4><p><a href="tel:+393792604710">+39 379 260 4710</a></p></div></div>
+<div class="contact-detail"><div class="contact-detail-icon">✉️</div><div><h4>Email</h4><p><a href="mailto:vmac88@hotmail.com">vmac88@hotmail.com</a></p></div></div>
+<div style="margin-top:24px;border-radius:12px;overflow:hidden;aspect-ratio:16/9">
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3042.8336235213246!2d17.882372415392457!3d40.30165297937867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13469b572f60f291%3A0xfe709c9d39ef9f59!2sZeituna%20Lodge%20Salento!5e0!3m2!1sit!2sit!4v1686231799202!5m2!1sit!2sit" width="100%" height="100%" style="border:none" allowfullscreen loading="lazy" title="Map"></iframe>
+</div>
+</div>
+<!-- BOOKING FORM -->
+<div class="booking-form anim anim-delay-1">
+<h3 data-i18n="form_title">Richiesta di Prenotazione</h3>
+<div id="bookingFormFields">
+<div class="form-group"><label data-i18n="form_name">Nome <span class="req">*</span></label><input type="text" id="bk-name" required></div>
+<div class="form-group"><label>Email <span class="req">*</span></label><input type="email" id="bk-email" required></div>
+<div class="form-group"><label data-i18n="form_phone">Telefono <span class="req">*</span></label><input type="tel" id="bk-phone"></div>
+<div class="form-group"><label data-i18n="form_house">Casa <span class="req">*</span></label>
+<select id="bk-house"><option>Casa Favolosa</option><option>Casa Carolea</option><option>Casa Cellina</option><option>Casa Olea</option></select></div>
+<div class="form-row">
+<div class="form-group"><label>Check-in <span class="req">*</span></label><input type="date" id="bk-checkin"></div>
+<div class="form-group"><label>Check-out <span class="req">*</span></label><input type="date" id="bk-checkout"></div>
+</div>
+<div class="form-group"><label data-i18n="form_msg">Messaggio</label><textarea id="bk-msg" rows="4"></textarea></div>
+<div class="form-check"><input type="checkbox" id="bk-privacy"><label for="bk-privacy" data-i18n="form_privacy">Accetto la privacy policy</label></div>
+<button class="btn-primary" style="width:100%;justify-content:center" onclick="submitBooking()" data-i18n="form_send">Invia Richiesta</button>
+</div>
+<div class="form-success" id="bookingSuccess">
+<div class="fs-icon">✅</div>
+<h4 data-i18n="form_ok_title">Richiesta Inviata!</h4>
+<p data-i18n="form_ok_text">Riceverai una conferma via email. Ti contatteremo al più presto.</p>
+</div>
+</div>
+</div></div></section>
+
+</div><!-- /page-home -->
+
+<!-- ════════════════ PAGE: HOUSE DETAIL ════════════════ -->
+<div class="page" id="page-house"><div id="house-detail-content"></div></div>
+
+<!-- ════════════════ PAGE: GALLERY ════════════════ -->
+<div class="page" id="page-gallery">
+<section class="gallery-page-section"><div class="container">
+<div class="gallery-page-header anim">
+<div class="section-label">Gallery</div>
+<h2 class="section-title" data-i18n="gallery_title">Zeituna Lodge in Immagini</h2>
+</div>
+<div class="gallery-masonry" id="galleryMasonry"></div>
+</div></section>
 </div>
 
-<!-- INTRO -->
-<section class="intro" id="about">
-  <div class="container">
-    <div class="intro-grid">
-      <div class="intro-image anim">
-        <img src="https://www.zeitunalodge.it/wp-content/uploads/2025/06/20250504_115832-scaled.jpg" alt="Zeituna Lodge" loading="lazy">
-        <div class="intro-image-accent"></div>
-      </div>
-      <div class="intro-content anim anim-delay-1">
-        <div class="section-label" data-i18n="about_label">La Nostra Storia</div>
-        <h2 class="section-title" data-i18n="about_title">Dalla Francia al Salento, tra mare, vento e ulivi</h2>
-        <p class="section-text" data-i18n="about_text1">Ingegnere edile di formazione, ho lavorato per anni in Francia progettando case pensate per essere vissute con armonia. Un viaggio in Puglia ha cambiato tutto: la campagna silenziosa, i colori della terra, la bellezza senza tempo degli ulivi e la libertà del mare.</p>
-        <p class="section-text" style="margin-top:14px;" data-i18n="about_text2">Ogni casa è stata progettata con cura, come se dovessi abitarla io stesso: materiali naturali, colori che richiamano il paesaggio, privacy e dettagli che fanno la differenza. Una casa non è solo un posto dove dormire, ma parte dell'esperienza di viaggio.</p>
-        <div class="intro-signature" data-i18n="about_sig">— Il Fondatore</div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- ════════════════ PAGE: TERRITORY ════════════════ -->
+<div class="page" id="page-territory">
+<section class="gallery-page-section"><div class="container">
+<div class="gallery-page-header anim">
+<div class="section-label" data-i18n="terr_label">Il Territorio</div>
+<h2 class="section-title" data-i18n="terr_page_title">Scopri il Salento</h2>
+<p class="section-text" style="margin:0 auto" data-i18n="terr_page_intro">Il Salento è una terra accogliente e ricca di luoghi dove rilassarsi e trascorrere momenti unici. Soggiornando a Zeituna Lodge avrete la possibilità di vivere emozioni indimenticabili.</p>
+</div>
+<div class="territory-cards" id="terrCards"></div>
+</div></section>
+</div>
 
-<!-- HOUSES -->
-<section class="houses" id="houses">
-  <div class="container">
-    <div class="houses-header anim">
-      <div class="section-label" data-i18n="houses_label">Alloggi</div>
-      <h2 class="section-title" data-i18n="houses_title">Le Case di Zeituna Lodge</h2>
-      <p class="section-text" data-i18n="houses_text">Di recente costruzione e dotate di tutti i comfort, per una vacanza all'insegna del relax nel cuore del Salento.</p>
-    </div>
-    <div class="houses-grid">
-      <div class="house-card anim">
-        <div class="house-card-img">
-          <img src="https://www.zeitunalodge.it/wp-content/uploads/2025/12/20251123_144207-scaled.jpg" alt="Casa Favolosa" loading="lazy">
-          <div class="house-badge" data-i18n="badge_pool">Vasca Privata</div>
-        </div>
-        <div class="house-card-body">
-          <h3>Casa Favolosa</h3>
-          <div class="house-meta">
-            <span>📐 35 m²</span>
-            <span data-i18n="guests_4">👥 Fino a 4 ospiti</span>
-          </div>
-          <p data-i18n="casa_fav_desc">Appartamento su un unico piano con camera matrimoniale, cucina attrezzata e accesso esclusivo alla vasca 2×2 nella veranda solarium.</p>
-          <div class="house-amenities">
-            <span>Wi-Fi</span><span data-i18n="am_kitchen">Cucina</span><span>TV</span><span data-i18n="am_terrace">Terrazza</span><span data-i18n="am_sofa">Divano letto</span>
-          </div>
-          <a href="#" class="btn-secondary" data-i18n="btn_more">Scopri di più <span class="arrow-icon">→</span></a>
-        </div>
-      </div>
-      <div class="house-card anim anim-delay-1">
-        <div class="house-card-img">
-          <img src="https://www.zeitunalodge.it/wp-content/uploads/2025/06/20240615_104417-scaled.jpg" alt="Casa Cellina" loading="lazy">
-          <div class="house-badge" data-i18n="badge_largest">La Più Grande</div>
-        </div>
-        <div class="house-card-body">
-          <h3>Casa Cellina</h3>
-          <div class="house-meta">
-            <span>📐 65 m²</span>
-            <span data-i18n="guests_6">👥 Fino a 6 ospiti</span>
-          </div>
-          <p data-i18n="casa_cel_desc">La casa più spaziosa della struttura, ideale per famiglie o gruppi di amici alla ricerca di comfort e privacy nel verde.</p>
-          <div class="house-amenities">
-            <span>Wi-Fi</span><span data-i18n="am_kitchen">Cucina</span><span>TV</span><span data-i18n="am_2bed">2 Camere</span><span data-i18n="am_terrace">Terrazza</span>
-          </div>
-          <a href="#" class="btn-secondary" data-i18n="btn_more">Scopri di più <span class="arrow-icon">→</span></a>
-        </div>
-      </div>
-      <div class="house-card anim anim-delay-2">
-        <div class="house-card-img">
-          <img src="https://www.zeitunalodge.it/wp-content/uploads/2025/12/20251202_141425-scaled.jpg" alt="Casa Carolea" loading="lazy">
-          <div class="house-badge" data-i18n="badge_modern">Comfort Moderno</div>
-        </div>
-        <div class="house-card-body">
-          <h3>Casa Carolea</h3>
-          <div class="house-meta">
-            <span>📐 40 m²</span>
-            <span data-i18n="guests_6">👥 Fino a 6 ospiti</span>
-          </div>
-          <p data-i18n="casa_car_desc">Spazi curati e funzionali con terrazzo privato immerso nel verde, perfetta per coppie e piccole famiglie.</p>
-          <div class="house-amenities">
-            <span>Wi-Fi</span><span data-i18n="am_kitchen">Cucina</span><span>TV</span><span data-i18n="am_privterrace">Terrazza Privata</span>
-          </div>
-          <a href="#" class="btn-secondary" data-i18n="btn_more">Scopri di più <span class="arrow-icon">→</span></a>
-        </div>
-      </div>
-      <div class="house-card anim anim-delay-3">
-        <div class="house-card-img">
-          <img src="https://www.zeitunalodge.it/wp-content/uploads/2025/12/MRZ_6236.jpg" alt="Casa Olea" loading="lazy">
-          <div class="house-badge" data-i18n="badge_olives">Tra gli Ulivi</div>
-        </div>
-        <div class="house-card-body">
-          <h3>Casa Olea</h3>
-          <div class="house-meta">
-            <span>📐 35 m²</span>
-            <span data-i18n="guests_4">👥 Fino a 4 ospiti</span>
-          </div>
-          <p data-i18n="casa_olea_desc">Intima e raccolta, Casa Olea è immersa nell'uliveto. Materiali naturali e vista sul verde per un soggiorno autentico.</p>
-          <div class="house-amenities">
-            <span>Wi-Fi</span><span data-i18n="am_kitchen">Cucina</span><span>TV</span><span data-i18n="am_terrace">Terrazza</span>
-          </div>
-          <a href="#" class="btn-secondary" data-i18n="btn_more">Scopri di più <span class="arrow-icon">→</span></a>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- ════════════════ PAGE: TERRITORY DETAIL ════════════════ -->
+<div class="page" id="page-terr-detail"><div id="terr-detail-content"></div></div>
 
-<!-- EXPERIENCES -->
-<section class="experience" id="experiences">
-  <div class="container">
-    <div class="anim">
-      <div class="section-label" data-i18n="exp_label">Esperienze</div>
-      <h2 class="section-title" data-i18n="exp_title">Attività uniche con esperti del luogo</h2>
-      <p class="section-text" data-i18n="exp_text">Scopri il Salento più autentico con escursioni e attività pensate per ogni tipo di viaggiatore.</p>
-    </div>
-    <div class="experience-grid">
-      <div class="exp-card anim">
-        <img src="https://www.zeitunalodge.it/wp-content/uploads/2023/06/esperienza_salento_open_boat_vivi_salento-667x445-1-300x200.jpg" alt="Boat" loading="lazy">
-        <div class="exp-card-overlay">
-          <h3 data-i18n="exp_boat">Escursioni in Barca</h3>
-          <p data-i18n="exp_boat_desc">Scopri le calette e le grotte del litorale ionico e adriatico dal mare.</p>
-        </div>
-      </div>
-      <div class="exp-card anim anim-delay-1">
-        <img src="https://www.zeitunalodge.it/wp-content/uploads/2023/06/escursione-bici-salento-porto-cesareo-300x200.jpg" alt="Bike" loading="lazy">
-        <div class="exp-card-overlay">
-          <h3 data-i18n="exp_bike">Escursioni in Bici</h3>
-          <p data-i18n="exp_bike_desc">Pedalate tra masserie, muretti a secco e panorami mozzafiato.</p>
-        </div>
-      </div>
-      <div class="exp-card anim anim-delay-2">
-        <img src="https://www.zeitunalodge.it/wp-content/uploads/2023/06/esperienza_corso_cucina_salento_4-300x200.jpg" alt="Cooking" loading="lazy">
-        <div class="exp-card-overlay">
-          <h3 data-i18n="exp_cook">Corso di Cucina</h3>
-          <p data-i18n="exp_cook_desc">Impara i segreti della cucina salentina con chef esperti del territorio.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- STORY -->
-<section class="story">
-  <div class="container">
-    <div class="story-grid">
-      <div class="anim">
-        <div class="section-label" data-i18n="why_label">Perché Scegliere Noi</div>
-        <h2 class="section-title" data-i18n="why_title">Un equilibrio perfetto tra natura, comfort e mare</h2>
-        <p class="section-text" data-i18n="why_text1">Ci troviamo nel cuore della campagna salentina, circondati da ulivi, in un'atmosfera autentica e silenziosa, ma a soli tre chilometri dal mare. Abbastanza lontani dal caos turistico per godersi la pace, e abbastanza vicini per raggiungere spiagge, calette e borghi costieri.</p>
-        <p class="section-text" style="margin-top:14px;" data-i18n="why_text2">La posizione permette di vivere entrambi i mari del Salento: il cristallino Ionio, con spiagge adatte ai bambini, e il più selvaggio Adriatico, scelto da chi ama scogliere, grotte e panorami intensi.</p>
-        <div class="story-stats">
-          <div>
-            <div class="stat-number">3 km</div>
-            <div class="stat-label" data-i18n="stat_sea">Dal mare</div>
-          </div>
-          <div>
-            <div class="stat-number">3 ha</div>
-            <div class="stat-label" data-i18n="stat_land">Di terreno verde</div>
-          </div>
-          <div>
-            <div class="stat-number">4</div>
-            <div class="stat-label" data-i18n="stat_houses">Case indipendenti</div>
-          </div>
-        </div>
-      </div>
-      <div class="story-image anim anim-delay-1">
-        <img src="https://www.zeitunalodge.it/wp-content/uploads/2025/06/20240612_142204-scaled.jpg" alt="Salento" loading="lazy">
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TERRITORY -->
-<section class="territory" id="territory">
-  <div class="container">
-    <div class="territory-header anim">
-      <div class="section-label" data-i18n="terr_label">Il Territorio</div>
-      <h2 class="section-title" data-i18n="terr_title">Scopri il Salento</h2>
-      <p class="section-text" data-i18n="terr_text">Una terra dove il vento è parte della vita quotidiana, tra due mari e tradizioni millenarie.</p>
-    </div>
-    <div class="territory-cards">
-      <div class="terr-card anim">
-        <div class="terr-card-icon">🏖️</div>
-        <h3 data-i18n="terr_ionian">Mar Ionio</h3>
-        <p data-i18n="terr_ionian_desc">Spiagge di sabbia fine e acqua cristallina, ideali per le famiglie e per chi cerca relax e colori caraibici.</p>
-      </div>
-      <div class="terr-card anim anim-delay-1">
-        <div class="terr-card-icon">🌊</div>
-        <h3 data-i18n="terr_adriatic">Mar Adriatico</h3>
-        <p data-i18n="terr_adriatic_desc">Costa selvaggia con scogliere, grotte e panorami sorprendenti. Il paradiso per gli amanti della natura incontaminata.</p>
-      </div>
-      <div class="terr-card anim anim-delay-2">
-        <div class="terr-card-icon">🏛️</div>
-        <h3 data-i18n="terr_culture">Borghi e Cultura</h3>
-        <p data-i18n="terr_culture_desc">Lecce, Otranto, Gallipoli e i piccoli borghi del Salento offrono arte, architettura barocca e tradizioni autentiche.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section class="contact" id="contact">
-  <div class="container">
-    <div class="contact-grid">
-      <div class="anim">
-        <div class="section-label" data-i18n="contact_label">Contatti</div>
-        <h2 style="font-family:var(--font-display);font-size:2.2rem;font-weight:400;color:var(--olive-dark);margin-bottom:24px;" data-i18n="contact_title">Vieni a trovarci</h2>
-        <div class="contact-detail">
-          <div class="contact-detail-icon">📍</div>
-          <div>
-            <h4 data-i18n="contact_address">Indirizzo</h4>
-            <p>Torre Lapillo, Porto Cesareo (LE)<br>Puglia, Italia</p>
-          </div>
-        </div>
-        <div class="contact-detail">
-          <div class="contact-detail-icon">📞</div>
-          <div>
-            <h4 data-i18n="contact_phone">Telefono</h4>
-            <p><a href="tel:+393792604710">+39 379 260 4710</a></p>
-          </div>
-        </div>
-        <div class="contact-detail">
-          <div class="contact-detail-icon">✉️</div>
-          <div>
-            <h4>Email</h4>
-            <p><a href="mailto:vmac88@hotmail.com">vmac88@hotmail.com</a></p>
-          </div>
-        </div>
-        <div class="contact-hours">
-          <div class="hours-block">
-            <h4>Check-in</h4>
-            <p>15:00 – 20:00</p>
-          </div>
-          <div class="hours-block">
-            <h4>Check-out</h4>
-            <p>06:00 – 10:00</p>
-          </div>
-        </div>
-      </div>
-      <div class="map-wrapper anim anim-delay-1">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3042.8336235213246!2d17.882372415392457!3d40.30165297937867!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x13469b572f60f291%3A0xfe709c9d39ef9f59!2sZeituna%20Lodge%20Salento!5e0!3m2!1sit!2sit!4v1686231799202!5m2!1sit!2sit" allowfullscreen loading="lazy" title="Mappa Zeituna Lodge"></iframe>
-      </div>
-    </div>
-  </div>
-</section>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox">
+<div class="lightbox-close" onclick="closeLightbox()">✕</div>
+<button class="lightbox-nav lightbox-prev" onclick="lightboxNav(-1)">‹</button>
+<button class="lightbox-nav lightbox-next" onclick="lightboxNav(1)">›</button>
+<img id="lightboxImg" src="" alt="">
+<div class="lightbox-counter" id="lightboxCounter"></div>
+</div>
 
 <!-- FOOTER -->
-<footer>
-  <div class="container">
-    <div class="footer-grid">
-      <div class="footer-brand">
-        <div class="logo-text">Zeituna Lodge<span>Torre Lapillo · Salento</span></div>
-        <p data-i18n="footer_desc">Immersi nella campagna salentina, circondati da ulivi, a soli tre chilometri dal mare. Un luogo di pace, comfort e autenticità.</p>
-      </div>
-      <div class="footer-col">
-        <h4 data-i18n="footer_nav">Navigazione</h4>
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about" data-i18n="nav_about">La Struttura</a></li>
-          <li><a href="#houses" data-i18n="nav_houses">Le Case</a></li>
-          <li><a href="#experiences" data-i18n="nav_exp">Esperienze</a></li>
-          <li><a href="#territory" data-i18n="nav_territory">Il Territorio</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4 data-i18n="footer_houses">Le Case</h4>
-        <ul>
-          <li><a href="#">Casa Favolosa</a></li>
-          <li><a href="#">Casa Cellina</a></li>
-          <li><a href="#">Casa Carolea</a></li>
-          <li><a href="#">Casa Olea</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4 data-i18n="nav_contact">Contatti</h4>
-        <ul>
-          <li><a href="tel:+393792604710">+39 379 260 4710</a></li>
-          <li><a href="mailto:vmac88@hotmail.com">vmac88@hotmail.com</a></li>
-          <li><a href="#">Cookie Policy</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <span>© 2026 Zeituna Lodge — Salento, Puglia</span>
-      <a href="#">Privacy & Cookie Policy</a>
-    </div>
-  </div>
-</footer>
+<footer><div class="container">
+<div class="footer-grid">
+<div class="footer-brand"><div class="logo-text">Zeituna Lodge<span>Torre Lapillo · Salento</span></div><p data-i18n="footer_desc">Immersi nella campagna salentina, circondati da ulivi, a soli tre chilometri dal mare.</p></div>
+<div class="footer-col"><h4 data-i18n="footer_nav">Navigazione</h4><ul>
+<li><a href="#" onclick="goHome();return false">Home</a></li>
+<li><a href="#" onclick="showPage('gallery');return false">Gallery</a></li>
+<li><a href="#" onclick="showPage('territory');return false" data-i18n="nav_territory">Il Territorio</a></li>
+<li><a href="#" onclick="scrollToSection('contact');return false" data-i18n="nav_contact">Contatti</a></li>
+</ul></div>
+<div class="footer-col"><h4 data-i18n="footer_houses">Le Case</h4><ul>
+<li><a href="#" onclick="showHouse('favolosa');return false">Casa Favolosa</a></li>
+<li><a href="#" onclick="showHouse('cellina');return false">Casa Cellina</a></li>
+<li><a href="#" onclick="showHouse('carolea');return false">Casa Carolea</a></li>
+<li><a href="#" onclick="showHouse('olea');return false">Casa Olea</a></li>
+</ul></div>
+<div class="footer-col"><h4 data-i18n="nav_contact">Contatti</h4><ul>
+<li><a href="tel:+393792604710">+39 379 260 4710</a></li>
+<li><a href="mailto:vmac88@hotmail.com">vmac88@hotmail.com</a></li>
+</ul></div>
+</div>
+<div class="footer-bottom"><span>© 2026 Zeituna Lodge — Salento, Puglia</span><a href="#">Privacy & Cookie Policy</a></div>
+</div></footer>
 
 <script>
-// ─── TRANSLATION DATA ───
-const T = {
-  it: {
-    nav_home: "Home",
-    nav_about: "La Struttura",
-    nav_houses: "Le Case",
-    nav_exp: "Esperienze",
-    nav_territory: "Il Territorio",
-    nav_contact: "Contatti",
-    nav_cta: "Prenota Ora",
-    hero_title: 'Dove la <em>natura</em> incontra il <em>comfort</em>',
-    hero_text: "Immersi tra ulivi secolari e a pochi passi dal mare, le nostre case offrono un rifugio di pace nel cuore del Salento.",
-    hero_btn1: "Scopri le Case →",
-    hero_btn2: "La Nostra Storia",
-    hero_scroll: "Scopri",
-    feat_parking: "Parcheggio Gratuito",
-    feat_wifi: "Wi-Fi Gratuito",
-    feat_green: "Ampio Spazio Verde",
-    feat_jacuzzi: "Jacuzzi Esterna",
-    feat_shuttle: "Navetta Aeroporto",
-    feat_bike: "Pista Bike Cross",
-    about_label: "La Nostra Storia",
-    about_title: "Dalla Francia al Salento, tra mare, vento e ulivi",
-    about_text1: "Ingegnere edile di formazione, ho lavorato per anni in Francia progettando case pensate per essere vissute con armonia. Un viaggio in Puglia ha cambiato tutto: la campagna silenziosa, i colori della terra, la bellezza senza tempo degli ulivi e la libertà del mare.",
-    about_text2: "Ogni casa è stata progettata con cura, come se dovessi abitarla io stesso: materiali naturali, colori che richiamano il paesaggio, privacy e dettagli che fanno la differenza. Una casa non è solo un posto dove dormire, ma parte dell'esperienza di viaggio.",
-    about_sig: "— Il Fondatore",
-    houses_label: "Alloggi",
-    houses_title: "Le Case di Zeituna Lodge",
-    houses_text: "Di recente costruzione e dotate di tutti i comfort, per una vacanza all'insegna del relax nel cuore del Salento.",
-    badge_pool: "Vasca Privata",
-    badge_largest: "La Più Grande",
-    badge_modern: "Comfort Moderno",
-    badge_olives: "Tra gli Ulivi",
-    guests_4: "👥 Fino a 4 ospiti",
-    guests_6: "👥 Fino a 6 ospiti",
-    casa_fav_desc: "Appartamento su un unico piano con camera matrimoniale, cucina attrezzata e accesso esclusivo alla vasca 2×2 nella veranda solarium.",
-    casa_cel_desc: "La casa più spaziosa della struttura, ideale per famiglie o gruppi di amici alla ricerca di comfort e privacy nel verde.",
-    casa_car_desc: "Spazi curati e funzionali con terrazzo privato immerso nel verde, perfetta per coppie e piccole famiglie.",
-    casa_olea_desc: "Intima e raccolta, Casa Olea è immersa nell'uliveto. Materiali naturali e vista sul verde per un soggiorno autentico.",
-    am_kitchen: "Cucina",
-    am_terrace: "Terrazza",
-    am_sofa: "Divano letto",
-    am_2bed: "2 Camere",
-    am_privterrace: "Terrazza Privata",
-    btn_more: 'Scopri di più <span class="arrow-icon">→</span>',
-    exp_label: "Esperienze",
-    exp_title: "Attività uniche con esperti del luogo",
-    exp_text: "Scopri il Salento più autentico con escursioni e attività pensate per ogni tipo di viaggiatore.",
-    exp_boat: "Escursioni in Barca",
-    exp_boat_desc: "Scopri le calette e le grotte del litorale ionico e adriatico dal mare.",
-    exp_bike: "Escursioni in Bici",
-    exp_bike_desc: "Pedalate tra masserie, muretti a secco e panorami mozzafiato.",
-    exp_cook: "Corso di Cucina",
-    exp_cook_desc: "Impara i segreti della cucina salentina con chef esperti del territorio.",
-    why_label: "Perché Scegliere Noi",
-    why_title: "Un equilibrio perfetto tra natura, comfort e mare",
-    why_text1: "Ci troviamo nel cuore della campagna salentina, circondati da ulivi, in un'atmosfera autentica e silenziosa, ma a soli tre chilometri dal mare. Abbastanza lontani dal caos turistico per godersi la pace, e abbastanza vicini per raggiungere spiagge, calette e borghi costieri.",
-    why_text2: "La posizione permette di vivere entrambi i mari del Salento: il cristallino Ionio, con spiagge adatte ai bambini, e il più selvaggio Adriatico, scelto da chi ama scogliere, grotte e panorami intensi.",
-    stat_sea: "Dal mare",
-    stat_land: "Di terreno verde",
-    stat_houses: "Case indipendenti",
-    terr_label: "Il Territorio",
-    terr_title: "Scopri il Salento",
-    terr_text: "Una terra dove il vento è parte della vita quotidiana, tra due mari e tradizioni millenarie.",
-    terr_ionian: "Mar Ionio",
-    terr_ionian_desc: "Spiagge di sabbia fine e acqua cristallina, ideali per le famiglie e per chi cerca relax e colori caraibici.",
-    terr_adriatic: "Mar Adriatico",
-    terr_adriatic_desc: "Costa selvaggia con scogliere, grotte e panorami sorprendenti. Il paradiso per gli amanti della natura incontaminata.",
-    terr_culture: "Borghi e Cultura",
-    terr_culture_desc: "Lecce, Otranto, Gallipoli e i piccoli borghi del Salento offrono arte, architettura barocca e tradizioni autentiche.",
-    contact_label: "Contatti",
-    contact_title: "Vieni a trovarci",
-    contact_address: "Indirizzo",
-    contact_phone: "Telefono",
-    footer_desc: "Immersi nella campagna salentina, circondati da ulivi, a soli tre chilometri dal mare. Un luogo di pace, comfort e autenticità.",
-    footer_nav: "Navigazione",
-    footer_houses: "Le Case"
+// ══════════════════════════════════════════
+// DATA
+// ══════════════════════════════════════════
+const GALLERY_PHOTOS = [
+  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_091624.jpg",
+  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_091557.jpg",
+  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_091632.jpg",
+  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_091712.jpg",
+  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_091529.jpg",
+  "https://www.zeitunalodge.it/wp-content/gallery/gallery/1_20250629_091632.jpg",
+  "https://www.zeitunalodge.it/wp-content/gallery/gallery/1_20250629_091712.jpg",
+  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_091902.jpg",
+  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_092019.jpg",
+  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_092135.jpg",
+  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_092352.jpg",
+  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_092225.jpg",
+  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_092244.jpg",
+  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_092542.jpg",
+  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_092526.jpg"
+];
+
+const TERRITORY = {
+  marina: {
+    name:{it:"Area Marina Protetta",en:"Marine Protected Area",fr:"Aire Marine Protégée"},
+    img:"https://www.zeitunalodge.it/wp-content/uploads/2023/06/001-1.jpg",
+    short:{it:"Terza area marina più grande d'Italia con 16.500 ettari di superficie, magnifiche torri costiere e siti archeologici sommersi.",en:"Italy's third largest marine protected area spanning 16,500 hectares, with magnificent coastal towers and underwater archaeological sites.",fr:"Troisième plus grande aire marine d'Italie avec 16 500 hectares, de magnifiques tours côtières et des sites archéologiques sous-marins."},
+    desc:{it:"L'area marina protetta di Porto Cesareo si colloca al terzo posto tra le aree marine più grandi d'Italia con i suoi 16.500 ettari. Istituita nel 1997, è suddivisa in tre zone con differente grado di tutela. Lungo la costiera ionica si trovano magnifiche torri sorte intorno al 1500 per difendere la costa dai Turchi e dai Pirati: Torre Cesarea, Torre Lapillo e Torre Chianca. A Torre Chianca, a soli 4 metri di profondità, giacciono 5 colonne monolitiche del II secolo d.C., un sito archeologico sommerso di un'imbarcazione proveniente dall'isola greca di Eubea.",en:"The Porto Cesareo marine protected area ranks third among Italy's largest, spanning 16,500 hectares. Established in 1997, it is divided into three zones with different levels of protection. Along the Ionian coast stand magnificent towers built around 1500 to defend against Turkish and pirate attacks: Torre Cesarea, Torre Lapillo and Torre Chianca. At Torre Chianca, just 4 meters deep, lie 5 monolithic columns from the 2nd century AD — an underwater archaeological site from a vessel that came from the Greek island of Euboea.",fr:"L'aire marine protégée de Porto Cesareo se classe troisième parmi les plus grandes d'Italie avec 16 500 hectares. Créée en 1997, elle est divisée en trois zones de protection. Le long de la côte ionienne se dressent de magnifiques tours construites vers 1500 pour défendre la côte contre les Turcs et les pirates : Torre Cesarea, Torre Lapillo et Torre Chianca. À Torre Chianca, à seulement 4 mètres de profondeur, reposent 5 colonnes monolithiques du IIe siècle ap. J.-C."},
+    photos:["https://www.zeitunalodge.it/wp-content/gallery/foto-articolo-area-maria-protetta/002-2.jpg","https://www.zeitunalodge.it/wp-content/gallery/foto-articolo-area-maria-protetta/005.jpg","https://www.zeitunalodge.it/wp-content/gallery/foto-articolo-area-maria-protetta/001-2.jpg"]
   },
-  en: {
-    nav_home: "Home",
-    nav_about: "The Lodge",
-    nav_houses: "Houses",
-    nav_exp: "Experiences",
-    nav_territory: "The Area",
-    nav_contact: "Contact",
-    nav_cta: "Book Now",
-    hero_title: 'Where <em>nature</em> meets <em>comfort</em>',
-    hero_text: "Nestled among ancient olive trees and just steps from the sea, our houses offer a peaceful retreat in the heart of Salento.",
-    hero_btn1: "Explore the Houses →",
-    hero_btn2: "Our Story",
-    hero_scroll: "Explore",
-    feat_parking: "Free Parking",
-    feat_wifi: "Free Wi-Fi",
-    feat_green: "Large Green Area",
-    feat_jacuzzi: "Outdoor Jacuzzi",
-    feat_shuttle: "Airport Shuttle",
-    feat_bike: "Bike Cross Trail",
-    about_label: "Our Story",
-    about_title: "From France to Salento — sea, wind, and olive trees",
-    about_text1: "A civil engineer by training, I spent years in France designing homes built for harmony and comfort. A trip to Puglia changed everything: the silent countryside, the earthy colors, the timeless beauty of olive groves, and the freedom of the sea.",
-    about_text2: "Every house has been thoughtfully designed as if I were going to live in it myself: natural materials, landscape-inspired colors, privacy, and details that make the difference. A home isn't just a place to sleep — it's part of the travel experience.",
-    about_sig: "— The Founder",
-    houses_label: "Accommodation",
-    houses_title: "The Houses of Zeituna Lodge",
-    houses_text: "Recently built and fully equipped, designed for a relaxing holiday in the heart of Salento.",
-    badge_pool: "Private Pool",
-    badge_largest: "The Largest",
-    badge_modern: "Modern Comfort",
-    badge_olives: "Among the Olives",
-    guests_4: "👥 Up to 4 guests",
-    guests_6: "👥 Up to 6 guests",
-    casa_fav_desc: "Single-floor apartment with double bedroom, fully equipped kitchen, and exclusive access to a 2×2m pool on the solarium veranda.",
-    casa_cel_desc: "The most spacious house on the property, ideal for families or groups of friends looking for comfort and privacy surrounded by nature.",
-    casa_car_desc: "Well-designed and functional spaces with a private terrace overlooking the greenery, perfect for couples and small families.",
-    casa_olea_desc: "Intimate and cozy, Casa Olea is nestled in the olive grove. Natural materials and green views for an authentic stay.",
-    am_kitchen: "Kitchen",
-    am_terrace: "Terrace",
-    am_sofa: "Sofa bed",
-    am_2bed: "2 Bedrooms",
-    am_privterrace: "Private Terrace",
-    btn_more: 'Learn more <span class="arrow-icon">→</span>',
-    exp_label: "Experiences",
-    exp_title: "Unique activities with local experts",
-    exp_text: "Discover the most authentic Salento with excursions and activities designed for every type of traveler.",
-    exp_boat: "Boat Excursions",
-    exp_boat_desc: "Explore hidden coves and sea caves along the Ionian and Adriatic coastline.",
-    exp_bike: "Bike Tours",
-    exp_bike_desc: "Ride through farmsteads, dry-stone walls, and breathtaking landscapes.",
-    exp_cook: "Cooking Class",
-    exp_cook_desc: "Learn the secrets of Salento cuisine with expert local chefs.",
-    why_label: "Why Choose Us",
-    why_title: "A perfect balance of nature, comfort, and the sea",
-    why_text1: "We are situated in the heart of the Salento countryside, surrounded by olive trees, in an authentic and peaceful atmosphere — yet only three kilometers from the sea. Far enough from tourist crowds to enjoy tranquility, close enough to easily reach beaches, coves, and coastal villages.",
-    why_text2: "Our location lets you experience both of Salento's seas: the crystal-clear Ionian with family-friendly beaches, and the wilder Adriatic, favored by those who love cliffs, grottoes, and dramatic views.",
-    stat_sea: "From the sea",
-    stat_land: "Of green land",
-    stat_houses: "Independent houses",
-    terr_label: "The Area",
-    terr_title: "Discover Salento",
-    terr_text: "A land where the wind is part of daily life, between two seas and ancient traditions.",
-    terr_ionian: "Ionian Sea",
-    terr_ionian_desc: "Fine sandy beaches and crystal-clear waters, ideal for families and those seeking relaxation and Caribbean-like colors.",
-    terr_adriatic: "Adriatic Sea",
-    terr_adriatic_desc: "Wild coastline with cliffs, caves, and stunning panoramas. A paradise for lovers of unspoiled nature.",
-    terr_culture: "Villages & Culture",
-    terr_culture_desc: "Lecce, Otranto, Gallipoli and the small villages of Salento offer art, baroque architecture, and authentic traditions.",
-    contact_label: "Contact",
-    contact_title: "Come visit us",
-    contact_address: "Address",
-    contact_phone: "Phone",
-    footer_desc: "Nestled in the Salento countryside, surrounded by olive trees, just three kilometers from the sea. A place of peace, comfort, and authenticity.",
-    footer_nav: "Navigation",
-    footer_houses: "The Houses"
+  porto: {
+    name:{it:"Porto Cesareo",en:"Porto Cesareo",fr:"Porto Cesareo"},
+    img:"https://www.zeitunalodge.it/wp-content/uploads/2023/06/002.jpg",
+    short:{it:"18 km di costa con spiagge sabbiose, acque cristalline color smeraldo, dune, isolotti e la celebre Isola dei Conigli.",en:"18 km of coastline with sandy beaches, crystal-clear emerald waters, dunes, islets and the famous Rabbit Island.",fr:"18 km de littoral avec des plages de sable, des eaux cristallines émeraude, des dunes, des îlots et la célèbre Île aux Lapins."},
+    desc:{it:"Porto Cesareo si colloca sulla costa ionica del Salento. I suoi numerosi arenili si allungano per 18 km regalando acque limpide color smeraldo. Il territorio è caratterizzato da sabbia, dune ricche di vegetazione mediterranea, scogli e isolotti. Tra gli isolotti, l'Isola Grande (Isola dei Conigli) ricoperta di pini d'Aleppo, e l'Isola della Malva ospitano oltre 200 specie vegetali. La spiaggia più celebre è quella delle Dune, con un cordone di dune costiere che protegge l'ultimo lembo di spiaggia libera, estendendosi per circa 1 km.",en:"Porto Cesareo sits on the Ionian coast of Salento. Its numerous beaches stretch for 18 km offering crystal-clear emerald waters. The territory features sand, dunes rich in Mediterranean vegetation, rocks and islets. Among them, Isola Grande (Rabbit Island) covered in Aleppo pines, and Isola della Malva host over 200 plant species. The most famous beach is Le Dune, with a ridge of coastal dunes protecting the last stretch of free beach, extending about 1 km.",fr:"Porto Cesareo se situe sur la côte ionienne du Salento. Ses plages s'étendent sur 18 km offrant des eaux cristallines émeraude. Le territoire comprend sable, dunes riches en végétation méditerranéenne, rochers et îlots. Parmi eux, l'Isola Grande (Île aux Lapins) couverte de pins d'Alep, et l'Isola della Malva abritent plus de 200 espèces végétales. La plage la plus célèbre est celle des Dunes, longue d'environ 1 km."},
+    photos:["https://www.zeitunalodge.it/wp-content/gallery/porto-cesareo/001-1.jpg","https://www.zeitunalodge.it/wp-content/gallery/porto-cesareo/002-1.jpg","https://www.zeitunalodge.it/wp-content/gallery/porto-cesareo/008-1.jpg"]
   },
-  fr: {
-    nav_home: "Accueil",
-    nav_about: "La Structure",
-    nav_houses: "Les Maisons",
-    nav_exp: "Expériences",
-    nav_territory: "Le Territoire",
-    nav_contact: "Contact",
-    nav_cta: "Réserver",
-    hero_title: 'Où la <em>nature</em> rencontre le <em>confort</em>',
-    hero_text: "Nichées parmi des oliviers centenaires et à quelques pas de la mer, nos maisons offrent un havre de paix au cœur du Salento.",
-    hero_btn1: "Découvrir les Maisons →",
-    hero_btn2: "Notre Histoire",
-    hero_scroll: "Découvrir",
-    feat_parking: "Parking Gratuit",
-    feat_wifi: "Wi-Fi Gratuit",
-    feat_green: "Grand Espace Vert",
-    feat_jacuzzi: "Jacuzzi Extérieur",
-    feat_shuttle: "Navette Aéroport",
-    feat_bike: "Piste de Bike Cross",
-    about_label: "Notre Histoire",
-    about_title: "De la France au Salento — mer, vent et oliviers",
-    about_text1: "Ingénieur en génie civil de formation, j'ai travaillé pendant des années en France à concevoir des maisons pensées pour l'harmonie et le confort. Un voyage dans les Pouilles a tout changé : la campagne silencieuse, les couleurs de la terre, la beauté intemporelle des oliviers et la liberté de la mer.",
-    about_text2: "Chaque maison a été conçue avec soin, comme si j'allais y vivre moi-même : matériaux naturels, couleurs inspirées du paysage, intimité et détails qui font toute la différence. Une maison n'est pas qu'un endroit pour dormir, elle fait partie de l'expérience de voyage.",
-    about_sig: "— Le Fondateur",
-    houses_label: "Hébergements",
-    houses_title: "Les Maisons de Zeituna Lodge",
-    houses_text: "De construction récente et équipées de tout le confort, pour des vacances relaxantes au cœur du Salento.",
-    badge_pool: "Bassin Privé",
-    badge_largest: "La Plus Grande",
-    badge_modern: "Confort Moderne",
-    badge_olives: "Parmi les Oliviers",
-    guests_4: "👥 Jusqu'à 4 personnes",
-    guests_6: "👥 Jusqu'à 6 personnes",
-    casa_fav_desc: "Appartement de plain-pied avec chambre double, cuisine équipée et accès exclusif au bassin 2×2m sur la véranda solarium.",
-    casa_cel_desc: "La maison la plus spacieuse de la propriété, idéale pour les familles ou groupes d'amis recherchant confort et intimité en pleine nature.",
-    casa_car_desc: "Espaces soignés et fonctionnels avec terrasse privée donnant sur la verdure, parfaite pour les couples et petites familles.",
-    casa_olea_desc: "Intime et chaleureuse, Casa Olea est nichée dans l'oliveraie. Matériaux naturels et vue sur la verdure pour un séjour authentique.",
-    am_kitchen: "Cuisine",
-    am_terrace: "Terrasse",
-    am_sofa: "Canapé-lit",
-    am_2bed: "2 Chambres",
-    am_privterrace: "Terrasse Privée",
-    btn_more: 'En savoir plus <span class="arrow-icon">→</span>',
-    exp_label: "Expériences",
-    exp_title: "Activités uniques avec des experts locaux",
-    exp_text: "Découvrez le Salento le plus authentique avec des excursions et activités conçues pour chaque type de voyageur.",
-    exp_boat: "Excursions en Bateau",
-    exp_boat_desc: "Explorez les criques cachées et les grottes marines le long de la côte ionienne et adriatique.",
-    exp_bike: "Excursions à Vélo",
-    exp_bike_desc: "Pédalez entre masseries, murets de pierre sèche et panoramas à couper le souffle.",
-    exp_cook: "Cours de Cuisine",
-    exp_cook_desc: "Apprenez les secrets de la cuisine du Salento avec des chefs locaux experts.",
-    why_label: "Pourquoi Nous Choisir",
-    why_title: "Un équilibre parfait entre nature, confort et mer",
-    why_text1: "Nous sommes situés au cœur de la campagne du Salento, entourés d'oliviers, dans une atmosphère authentique et paisible — à seulement trois kilomètres de la mer. Assez loin de l'agitation touristique pour profiter de la tranquillité, assez proches pour rejoindre facilement plages, criques et villages côtiers.",
-    why_text2: "Notre position permet de vivre les deux mers du Salento : la mer Ionienne cristalline, avec ses plages adaptées aux familles, et l'Adriatique plus sauvage, prisée par les amateurs de falaises, grottes et panoramas grandioses.",
-    stat_sea: "De la mer",
-    stat_land: "De terrain vert",
-    stat_houses: "Maisons indépendantes",
-    terr_label: "Le Territoire",
-    terr_title: "Découvrez le Salento",
-    terr_text: "Une terre où le vent fait partie du quotidien, entre deux mers et des traditions millénaires.",
-    terr_ionian: "Mer Ionienne",
-    terr_ionian_desc: "Plages de sable fin et eaux cristallines, idéales pour les familles et ceux qui recherchent détente et couleurs caribéennes.",
-    terr_adriatic: "Mer Adriatique",
-    terr_adriatic_desc: "Côte sauvage avec falaises, grottes et panoramas surprenants. Le paradis des amoureux de la nature préservée.",
-    terr_culture: "Villages et Culture",
-    terr_culture_desc: "Lecce, Otranto, Gallipoli et les petits villages du Salento offrent art, architecture baroque et traditions authentiques.",
-    contact_label: "Contact",
-    contact_title: "Venez nous rendre visite",
-    contact_address: "Adresse",
-    contact_phone: "Téléphone",
-    footer_desc: "Nichés dans la campagne du Salento, entourés d'oliviers, à seulement trois kilomètres de la mer. Un lieu de paix, de confort et d'authenticité.",
-    footer_nav: "Navigation",
-    footer_houses: "Les Maisons"
+  lecce: {
+    name:{it:"Lecce: La Signora del Barocco",en:"Lecce: The Lady of Baroque",fr:"Lecce : La Dame du Baroque"},
+    img:"https://www.zeitunalodge.it/wp-content/uploads/2023/06/003.jpg",
+    short:{it:"La 'Firenze del Sud' con la sua straordinaria architettura barocca in pietra leccese dorata e un centro storico senza uguali.",en:"The 'Florence of the South' with its extraordinary baroque architecture in golden Lecce stone and an unparalleled historic center.",fr:"La 'Florence du Sud' avec son extraordinaire architecture baroque en pierre de Lecce dorée et un centre historique sans pareil."},
+    desc:{it:"Lecce, detta la 'Signora del Barocco' e la 'Firenze del Sud', è una delle città più interessanti della Puglia per la sua architettura seicentesca. Di origini antiche, conobbe particolare splendore durante il Regno di Napoli, quando si sviluppò il celebre 'barocco leccese', caratterizzato da una fastosa scenografia ornamentale. La pietra leccese, un calcare tenero e compatto dai colori caldi e dorati, si presta alla lavorazione dello scalpellino e nel tempo assume una patina dorata resistente. È sufficiente passeggiare per il centro storico per ammirare come il tempo abbia fuso stili e forme in grande armonia.",en:"Lecce, known as the 'Lady of Baroque' and the 'Florence of the South', is one of Puglia's most fascinating cities for its 17th-century architecture. With ancient origins, it flourished during the Kingdom of Naples, when the celebrated 'Lecce baroque' developed, featuring lavish ornamental scenography. Lecce stone, a soft and compact limestone with warm golden tones, lends itself to chisel work and acquires a resistant golden patina over time. Simply walking through the historic center reveals how time has blended styles and forms into great harmony.",fr:"Lecce, surnommée la 'Dame du Baroque' et la 'Florence du Sud', est l'une des villes les plus fascinantes des Pouilles pour son architecture du XVIIe siècle. Aux origines anciennes, elle a connu son apogée sous le Royaume de Naples, avec le développement du célèbre 'baroque de Lecce'. La pierre de Lecce, un calcaire tendre et compact aux tons chauds et dorés, se prête au travail du ciseau et acquiert une patine dorée résistante au fil du temps."},
+    photos:["https://www.zeitunalodge.it/wp-content/gallery/lecce-la-signora-del-barocco/005-2.jpg","https://www.zeitunalodge.it/wp-content/gallery/lecce-la-signora-del-barocco/006-2.jpg","https://www.zeitunalodge.it/wp-content/gallery/lecce-la-signora-del-barocco/002-2.jpg"]
   }
 };
 
-let currentLang = 'it';
+const HOUSES = {
+  favolosa:{name:"Casa Favolosa",size:"35 m²",guests:{it:"Fino a 4 ospiti",en:"Up to 4 guests",fr:"Jusqu'à 4 personnes"},heroImg:"https://www.zeitunalodge.it/wp-content/uploads/2025/12/20251123_144207-scaled.jpg",
+    desc:{it:"Casa Favolosa offre 35mq su un unico piano con camera matrimoniale, armadio e cassettiera. Bagno con doccia. Sala pranzo e cucina in ambiente unico e versatile. Divano letto disponibile con supplemento. Accesso esclusivo alla vasca 2×2 nella veranda solarium. Accesso libero alla vasca idromassaggio nell'uliveto e alla pista bike cross con bici fornite.",en:"Casa Favolosa offers 35sqm on a single floor with double bedroom, wardrobe and chest of drawers. Bathroom with shower. Dining and kitchen in one versatile space. Sofa bed available with supplement. Exclusive access to the 2×2 pool on the sun terrace. Free access to the outdoor hot tub in the olive grove and bike cross track with bikes provided.",fr:"Casa Favolosa offre 35m² de plain-pied avec chambre double, armoire et commode. Salle de bain avec douche. Coin repas et cuisine en espace unique. Canapé-lit disponible avec supplément. Accès exclusif au bassin 2×2 sur la véranda solarium. Accès libre au jacuzzi dans l'oliveraie et à la piste de bike cross avec vélos fournis."},
+    amenities:{it:["Wi-Fi","Parcheggio","Cucina attrezzata","Forno microonde","Caffettiera","Bollitore","1 Camera matrimoniale","1 Divano letto","1 Bagno con doccia","TV","Ampia terrazza","Vasca 2×2 esclusiva"],en:["Wi-Fi","Parking","Equipped kitchen","Microwave","Coffee maker","Kettle","1 Double bedroom","1 Sofa bed","1 Bathroom w/ shower","TV","Large terrace","Exclusive 2×2 pool"],fr:["Wi-Fi","Parking","Cuisine équipée","Micro-ondes","Cafetière","Bouilloire","1 Chambre double","1 Canapé-lit","1 SdB avec douche","TV","Grande terrasse","Bassin 2×2 exclusif"]},
+    highlights:{it:[{icon:"🛁",title:"Vasca Esclusiva",text:"Vasca 2×2 privata"},{icon:"📐",title:"35 m²",text:"Piano unico"},{icon:"🐕",title:"Pet Friendly",text:"Cani < 10kg"}],en:[{icon:"🛁",title:"Private Pool",text:"Exclusive 2×2 tub"},{icon:"📐",title:"35 m²",text:"Single floor"},{icon:"🐕",title:"Pet Friendly",text:"Dogs < 10kg"}],fr:[{icon:"🛁",title:"Bassin Privé",text:"Bassin 2×2 exclusif"},{icon:"📐",title:"35 m²",text:"Plain-pied"},{icon:"🐕",title:"Pet Friendly",text:"Chiens < 10kg"}]},
+    photos:["https://www.zeitunalodge.it/wp-content/uploads/2025/12/20251123_144207-scaled.jpg","https://www.zeitunalodge.it/wp-content/gallery/casa-favolosa-10-posti/20251126_120258.jpg","https://www.zeitunalodge.it/wp-content/uploads/2023/06/MZ6_9655-scaled.jpg","https://www.zeitunalodge.it/wp-content/uploads/2025/06/20240612_142813-scaled.jpg"]},
+  carolea:{name:"Casa Carolea",size:"40 m²",guests:{it:"Fino a 6 ospiti",en:"Up to 6 guests",fr:"Jusqu'à 6 personnes"},heroImg:"https://www.zeitunalodge.it/wp-content/uploads/2025/12/20251202_141425-scaled.jpg",
+    desc:{it:"Casa Carolea ospita 6 persone in 40mq con arredo moderno. Terrazza e ampio giardino esclusivo. Soggiorno con divano letto e zona pranzo, cucina completa. Camera con letto matrimoniale e letto a castello. Bagno con doccia. Accesso esclusivo alla vasca esterna 2×2 e alla vasca idromassaggio nell'uliveto.",en:"Casa Carolea accommodates 6 guests in 40sqm with modern furnishing. Terrace and large private garden. Living room with sofa bed and dining area, fully equipped kitchen. Bedroom with double bed and bunk bed. Bathroom with shower. Exclusive access to outdoor 2×2 pool and shared hot tub in the olive grove.",fr:"Casa Carolea accueille 6 personnes sur 40m² avec mobilier moderne. Terrasse et grand jardin privatif. Séjour avec canapé-lit et coin repas, cuisine équipée. Chambre avec lit double et lits superposés. Salle de bain avec douche. Accès exclusif au bassin 2×2 et au jacuzzi dans l'oliveraie."},
+    amenities:{it:["Wi-Fi","Parcheggio","Letto matrimoniale","Letti a castello","Divano letto","Bagno con doccia","Frigo","Forno microonde","Caffettiera","Bollitore","TV","Terrazza","Giardino esclusivo","Vasca 2×2"],en:["Wi-Fi","Parking","Double bed","Bunk beds","Sofa bed","Bathroom w/ shower","Fridge","Microwave","Coffee maker","Kettle","TV","Terrace","Private garden","2×2 pool"],fr:["Wi-Fi","Parking","Lit double","Lits superposés","Canapé-lit","SdB avec douche","Réfrigérateur","Micro-ondes","Cafetière","Bouilloire","TV","Terrasse","Jardin privatif","Bassin 2×2"]},
+    highlights:{it:[{icon:"🌳",title:"Giardino Privato",text:"Terrazza e giardino esclusivi"},{icon:"📐",title:"40 m²",text:"Arredo moderno"},{icon:"👨‍👩‍👧‍👦",title:"Famiglia",text:"Fino a 6 ospiti"}],en:[{icon:"🌳",title:"Private Garden",text:"Exclusive terrace & garden"},{icon:"📐",title:"40 m²",text:"Modern furnishing"},{icon:"👨‍👩‍👧‍👦",title:"Family",text:"Up to 6 guests"}],fr:[{icon:"🌳",title:"Jardin Privé",text:"Terrasse et jardin exclusifs"},{icon:"📐",title:"40 m²",text:"Mobilier moderne"},{icon:"👨‍👩‍👧‍👦",title:"Famille",text:"Jusqu'à 6 personnes"}]},
+    photos:["https://www.zeitunalodge.it/wp-content/uploads/2025/12/20251202_141425-scaled.jpg","https://www.zeitunalodge.it/wp-content/uploads/2025/06/20240612_142204-scaled.jpg","https://www.zeitunalodge.it/wp-content/uploads/2025/06/20250504_120427-scaled.jpg","https://www.zeitunalodge.it/wp-content/uploads/2025/06/20250504_115832-scaled.jpg"]},
+  cellina:{name:"Casa Cellina",size:"65 m²",guests:{it:"Fino a 6 ospiti",en:"Up to 6 guests",fr:"Jusqu'à 6 personnes"},heroImg:"https://www.zeitunalodge.it/wp-content/uploads/2025/06/20240615_104417-scaled.jpg",
+    desc:{it:"Casa Cellina è la più spaziosa con 65mq su un unico piano. Camera matrimoniale con armadio e bagno con doccia. Seconda stanza con letto a castello e bagno dedicato, ideale per famiglie. Sala pranzo e cucina in ambiente versatile. Divano letto disponibile. Veranda solarium con tavolo, sedie e gazebo. Accesso alla vasca idromassaggio nell'uliveto e pista bike cross.",en:"Casa Cellina is the most spacious at 65sqm on a single floor. Double bedroom with wardrobe and en-suite bathroom. Second room with bunk bed and dedicated bathroom, ideal for families. Dining and kitchen in a versatile space. Sofa bed available. Solarium veranda with table, chairs and gazebo. Access to hot tub in the olive grove and bike cross track.",fr:"Casa Cellina est la plus spacieuse avec 65m² de plain-pied. Chambre double avec armoire et salle de bain. Seconde chambre avec lits superposés et salle de bain dédiée, idéale pour les familles. Coin repas et cuisine en espace polyvalent. Canapé-lit disponible. Véranda solarium avec table, chaises et gazebo. Accès au jacuzzi et à la piste de bike cross."},
+    amenities:{it:["Wi-Fi","Parcheggio","Cucina attrezzata","Forno microonde","Bollitore","Caffettiera","1 Camera matrimoniale","1 Camera letti a castello","1 Divano letto","2 Bagni con doccia","TV","Ampia terrazza con gazebo"],en:["Wi-Fi","Parking","Equipped kitchen","Microwave","Kettle","Coffee maker","1 Double bedroom","1 Bunk bed room","1 Sofa bed","2 Bathrooms w/ shower","TV","Large terrace with gazebo"],fr:["Wi-Fi","Parking","Cuisine équipée","Micro-ondes","Bouilloire","Cafetière","1 Chambre double","1 Chambre lits superposés","1 Canapé-lit","2 SdB avec douche","TV","Grande terrasse avec gazebo"]},
+    highlights:{it:[{icon:"📐",title:"65 m²",text:"La più spaziosa"},{icon:"🚿",title:"2 Bagni",text:"Bagni dedicati"},{icon:"☂️",title:"Gazebo",text:"Veranda attrezzata"}],en:[{icon:"📐",title:"65 m²",text:"Most spacious"},{icon:"🚿",title:"2 Bathrooms",text:"Dedicated bathrooms"},{icon:"☂️",title:"Gazebo",text:"Equipped veranda"}],fr:[{icon:"📐",title:"65 m²",text:"La plus spacieuse"},{icon:"🚿",title:"2 SdB",text:"Salles de bain dédiées"},{icon:"☂️",title:"Gazebo",text:"Véranda équipée"}]},
+    photos:["https://www.zeitunalodge.it/wp-content/uploads/2025/06/20240615_104417-scaled.jpg","https://www.zeitunalodge.it/wp-content/gallery/camera-cellina/20240612_155214.jpg","https://www.zeitunalodge.it/wp-content/uploads/2025/06/20230621_155745-scaled.jpg","https://www.zeitunalodge.it/wp-content/uploads/2025/06/20231009_175808-scaled.jpg"]},
+  olea:{name:"Casa Olea",size:"35 m²",guests:{it:"Fino a 4 ospiti",en:"Up to 4 guests",fr:"Jusqu'à 4 personnes"},heroImg:"https://www.zeitunalodge.it/wp-content/uploads/2025/12/MRZ_6236.jpg",
+    desc:{it:"Casa Olea offre 35mq su un unico piano con camera matrimoniale, armadio e cassettiera. Bagno con doccia. Sala pranzo e cucina in ambiente versatile. Divano letto con supplemento. Accesso libero alla vasca idromassaggio nell'uliveto e pista bike cross con bici fornite. Animali di piccola taglia ammessi.",en:"Casa Olea offers 35sqm on a single floor with double bedroom, wardrobe and drawers. Bathroom with shower. Dining and kitchen in one versatile space. Sofa bed available with supplement. Free access to outdoor hot tub in the olive grove and bike cross track. Small pets welcome.",fr:"Casa Olea offre 35m² de plain-pied avec chambre double, armoire et commode. Salle de bain avec douche. Coin repas et cuisine polyvalent. Canapé-lit avec supplément. Accès libre au jacuzzi dans l'oliveraie et piste de bike cross. Petits animaux acceptés."},
+    amenities:{it:["Wi-Fi","Parcheggio","Cucina attrezzata","Forno microonde","Tostapane","Caffettiera","Bollitore","1 Camera matrimoniale","1 Divano letto","1 Bagno con doccia","TV"],en:["Wi-Fi","Parking","Equipped kitchen","Microwave","Toaster","Coffee maker","Kettle","1 Double bedroom","1 Sofa bed","1 Bathroom w/ shower","TV"],fr:["Wi-Fi","Parking","Cuisine équipée","Micro-ondes","Grille-pain","Cafetière","Bouilloire","1 Chambre double","1 Canapé-lit","1 SdB avec douche","TV"]},
+    highlights:{it:[{icon:"🫒",title:"Tra gli Ulivi",text:"Immersa nell'uliveto"},{icon:"📐",title:"35 m²",text:"Piano unico"},{icon:"🐕",title:"Pet Friendly",text:"Cani < 10kg"}],en:[{icon:"🫒",title:"Among Olives",text:"Nestled in the grove"},{icon:"📐",title:"35 m²",text:"Single floor"},{icon:"🐕",title:"Pet Friendly",text:"Dogs < 10kg"}],fr:[{icon:"🫒",title:"Parmi les Oliviers",text:"Dans l'oliveraie"},{icon:"📐",title:"35 m²",text:"Plain-pied"},{icon:"🐕",title:"Pet Friendly",text:"Chiens < 10kg"}]},
+    photos:["https://www.zeitunalodge.it/wp-content/uploads/2025/12/MRZ_6236.jpg","https://www.zeitunalodge.it/wp-content/gallery/casa-olea/20240612_142304.jpg","https://www.zeitunalodge.it/wp-content/uploads/2025/06/20240612_142204-scaled.jpg","https://www.zeitunalodge.it/wp-content/uploads/2025/06/20250504_120427-scaled.jpg"]}
+};
 
-function setLang(lang) {
-  currentLang = lang;
-  document.documentElement.lang = lang;
-
-  // Update switcher buttons
-  document.querySelectorAll('.lang-btn').forEach(btn => {
-    btn.classList.toggle('active', btn.textContent.trim().toLowerCase() === lang);
-  });
-
-  // Update text content
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (T[lang] && T[lang][key] !== undefined) {
-      el.textContent = T[lang][key];
-    }
-  });
-
-  // Update HTML content (for tags with <em> etc.)
-  document.querySelectorAll('[data-i18n-html]').forEach(el => {
-    const key = el.getAttribute('data-i18n-html');
-    if (T[lang] && T[lang][key] !== undefined) {
-      el.innerHTML = T[lang][key];
-    }
-  });
-
-  // Update elements that need innerHTML (btn_more has arrow span)
-  document.querySelectorAll('[data-i18n="btn_more"]').forEach(el => {
-    if (T[lang] && T[lang]['btn_more']) {
-      el.innerHTML = T[lang]['btn_more'];
-    }
-  });
+// ══════════════════════════════════════════
+// PAGE NAVIGATION
+// ══════════════════════════════════════════
+function hideAllPages(){document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'))}
+function goHome(){hideAllPages();document.getElementById('page-home').classList.add('active');window.scrollTo({top:0});document.getElementById('navLinks').classList.remove('active')}
+function scrollToSection(id){
+  if(!document.getElementById('page-home').classList.contains('active')){hideAllPages();document.getElementById('page-home').classList.add('active')}
+  document.getElementById('navLinks').classList.remove('active');
+  setTimeout(()=>document.getElementById(id)?.scrollIntoView({behavior:'smooth'}),100);
+}
+function showPage(pageId){
+  hideAllPages();document.getElementById('page-'+pageId).classList.add('active');
+  window.scrollTo({top:0});document.getElementById('navLinks').classList.remove('active');
+  if(pageId==='gallery') renderGallery();
+  if(pageId==='territory') renderTerritory();
+  setTimeout(()=>{document.querySelectorAll('#page-'+pageId+' .anim').forEach(el=>{observer.observe(el)})},100);
 }
 
-// ─── HEADER SCROLL ───
-const header = document.getElementById('header');
-window.addEventListener('scroll', () => {
-  header.classList.toggle('scrolled', window.scrollY > 50);
-});
+// ══════════════════════════════════════════
+// GALLERY
+// ══════════════════════════════════════════
+let lbPhotos=[], lbIndex=0;
+function renderGallery(){
+  const c=document.getElementById('galleryMasonry');
+  c.innerHTML=GALLERY_PHOTOS.map((p,i)=>`<div class="gallery-masonry-item" onclick="openLightbox(GALLERY_PHOTOS,${i})"><img src="${p}" alt="Zeituna Lodge ${i+1}" loading="lazy"></div>`).join('');
+}
+function openLightbox(photos,i){lbPhotos=photos;lbIndex=i;updateLightbox();document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden'}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow=''}
+function lightboxNav(d){lbIndex=(lbIndex+d+lbPhotos.length)%lbPhotos.length;updateLightbox()}
+function updateLightbox(){document.getElementById('lightboxImg').src=lbPhotos[lbIndex];document.getElementById('lightboxCounter').textContent=`${lbIndex+1} / ${lbPhotos.length}`}
+document.addEventListener('keydown',e=>{if(!document.getElementById('lightbox').classList.contains('open'))return;if(e.key==='Escape')closeLightbox();if(e.key==='ArrowRight')lightboxNav(1);if(e.key==='ArrowLeft')lightboxNav(-1)});
 
-// ─── SCROLL ANIMATIONS ───
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-      observer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-document.querySelectorAll('.anim').forEach(el => observer.observe(el));
+// ══════════════════════════════════════════
+// TERRITORY
+// ══════════════════════════════════════════
+function renderTerritory(){
+  const lang=currentLang;const c=document.getElementById('terrCards');
+  c.innerHTML=Object.keys(TERRITORY).map(k=>{const t=TERRITORY[k];return `<div class="terr-card" onclick="showTerrDetail('${k}')"><div class="terr-card-img"><img src="${t.img}" alt="${t.name[lang]}" loading="lazy"></div><div class="terr-card-body"><h3>${t.name[lang]}</h3><p>${t.short[lang]}</p></div></div>`}).join('');
+}
+function showTerrDetail(key){
+  const t=TERRITORY[key];const lang=currentLang;
+  const backText={it:"← Il Territorio",en:"← The Territory",fr:"← Le Territoire"};
+  document.getElementById('terr-detail-content').innerHTML=`
+  <section class="hero house-hero"><div class="hero-bg" style="background-image:url('${t.img}')"></div><div class="hero-overlay"></div>
+  <div class="hero-content"><div class="hero-label">Salento · Puglia</div><h1>${t.name[lang]}</h1></div></section>
+  <section class="terr-detail-body"><div class="container">
+  <div class="back-btn" onclick="showPage('territory')">${backText[lang]}</div>
+  <p class="terr-detail-text">${t.desc[lang]}</p>
+  <div class="terr-detail-photos">${t.photos.map((p,i)=>`<img src="${p}" alt="" loading="lazy" onclick="openLightbox(TERRITORY['${key}'].photos,${i})">`).join('')}</div>
+  </div></section>`;
+  hideAllPages();document.getElementById('page-terr-detail').classList.add('active');window.scrollTo({top:0});
+}
 
-// ─── MOBILE MENU ───
-document.querySelectorAll('.nav-links a').forEach(a => {
-  a.addEventListener('click', () => {
-    document.getElementById('navLinks').classList.remove('active');
-  });
-});
+// ══════════════════════════════════════════
+// HOUSE DETAIL
+// ══════════════════════════════════════════
+let currentHouseGalleryIndex=0, currentHouseKey=null;
+function showHouse(key){
+  currentHouseKey=key;currentHouseGalleryIndex=0;const h=HOUSES[key];const lang=currentLang;
+  const L={back:{it:"← Tutte le case",en:"← All houses",fr:"← Toutes les maisons"},desc:{it:"Descrizione",en:"Description",fr:"Description"},amen:{it:"Dotazioni",en:"Amenities",fr:"Équipements"},other:{it:"Le Altre Case",en:"Other Houses",fr:"Les Autres Maisons"},detail:{it:"Dettagli",en:"Details",fr:"Détails"},pet:{it:"🐕 Cani piccoli (< 10kg) ammessi con supplemento",en:"🐕 Small dogs (< 10kg) welcome with surcharge",fr:"🐕 Petits chiens (< 10kg) acceptés avec supplément"},book:{it:"Prenota Ora",en:"Book Now",fr:"Réserver"},call:{it:"Contattaci",en:"Contact Us",fr:"Contactez-nous"}};
+  const others=Object.keys(HOUSES).filter(k=>k!==key);
+  document.getElementById('house-detail-content').innerHTML=`
+  <section class="hero house-hero"><div class="hero-bg" style="background-image:url('${h.heroImg}')"></div><div class="hero-overlay"></div>
+  <div class="hero-content"><div class="hero-label">Zeituna Lodge · Salento</div><h1>${h.name}</h1><p>${h.size} · ${h.guests[lang]}</p></div></section>
+  <section class="house-detail-body"><div class="container">
+  <div class="back-btn" onclick="scrollToSection('houses')">${L.back[lang]}</div>
+  <div class="house-detail-grid">
+  <div class="house-detail-text"><div class="section-label">${L.detail[lang]}</div><h2>${L.desc[lang]}</h2><p>${h.desc[lang]}</p><p style="font-size:.85rem;color:var(--olive);font-style:italic">${L.pet[lang]}</p>
+  <h2 style="margin-top:36px">${L.amen[lang]}</h2><div class="amenity-grid">${h.amenities[lang].map(a=>`<div class="amenity-item"><span class="a-icon">✓</span>${a}</div>`).join('')}</div>
+  <div style="margin-top:36px;display:flex;gap:12px;flex-wrap:wrap"><a href="#" onclick="scrollToSection('contact');return false" class="btn-primary">${L.book[lang]}</a><a href="tel:+393792604710" class="btn-outline" style="border-color:var(--olive);color:var(--olive)">${L.call[lang]}</a></div></div>
+  <div class="house-gallery"><div class="gallery-main" id="galleryMain"><img id="galleryImg" src="${h.photos[0]}" alt="${h.name}"><button class="gallery-nav gallery-prev" onclick="hGalleryNav(-1)">‹</button><button class="gallery-nav gallery-next" onclick="hGalleryNav(1)">›</button><div class="gallery-counter" id="hGalleryCounter">1 / ${h.photos.length}</div></div>
+  <div class="gallery-thumbs" id="hGalleryThumbs">${h.photos.map((p,i)=>`<div class="gallery-thumb ${i===0?'active':''}" onclick="hGalleryGo(${i})"><img src="${p}" alt="${i+1}"></div>`).join('')}</div>
+  <div class="house-info-cards">${h.highlights[lang].map(hl=>`<div class="info-card"><div class="ic-icon">${hl.icon}</div><h4>${hl.title}</h4><p>${hl.text}</p></div>`).join('')}</div></div>
+  </div></div></section>
+  <section class="other-houses"><div class="container"><div class="other-houses-header"><div class="section-label">${L.other[lang]}</div></div>
+  <div class="other-houses-grid">${others.map(k=>{const o=HOUSES[k];return `<div class="other-house-card" onclick="showHouse('${k}')"><div class="oh-img"><img src="${o.heroImg}" alt="${o.name}" loading="lazy"></div><div class="oh-body"><h3>${o.name}</h3><p>${o.size} · ${o.guests[lang]}</p></div></div>`}).join('')}</div>
+  </div></section>`;
+  hideAllPages();document.getElementById('page-house').classList.add('active');window.scrollTo({top:0});document.getElementById('navLinks').classList.remove('active');
+}
+function hGalleryNav(d){const h=HOUSES[currentHouseKey];currentHouseGalleryIndex=(currentHouseGalleryIndex+d+h.photos.length)%h.photos.length;updateHGallery()}
+function hGalleryGo(i){currentHouseGalleryIndex=i;updateHGallery()}
+function updateHGallery(){const h=HOUSES[currentHouseKey];document.getElementById('galleryImg').src=h.photos[currentHouseGalleryIndex];document.getElementById('hGalleryCounter').textContent=`${currentHouseGalleryIndex+1} / ${h.photos.length}`;document.querySelectorAll('.gallery-thumb').forEach((t,i)=>t.classList.toggle('active',i===currentHouseGalleryIndex))}
 
-// ─── SMOOTH SCROLL ───
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-  anchor.addEventListener('click', function(e) {
-    const target = document.querySelector(this.getAttribute('href'));
-    if (target) {
-      e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
-  });
-});
+// ══════════════════════════════════════════
+// BOOKING FORM
+// ══════════════════════════════════════════
+function submitBooking(){
+  const name=document.getElementById('bk-name').value;
+  const email=document.getElementById('bk-email').value;
+  const phone=document.getElementById('bk-phone').value;
+  const house=document.getElementById('bk-house').value;
+  const checkin=document.getElementById('bk-checkin').value;
+  const checkout=document.getElementById('bk-checkout').value;
+  const msg=document.getElementById('bk-msg').value;
+  const privacy=document.getElementById('bk-privacy').checked;
+  if(!name||!email||!checkin||!checkout){
+    const alertMsg={it:"Compila tutti i campi obbligatori.",en:"Please fill in all required fields.",fr:"Veuillez remplir tous les champs obligatoires."};
+    alert(alertMsg[currentLang]);return;
+  }
+  if(!privacy){
+    const alertMsg={it:"Accetta la privacy policy.",en:"Please accept the privacy policy.",fr:"Veuillez accepter la politique de confidentialité."};
+    alert(alertMsg[currentLang]);return;
+  }
+  const subject=encodeURIComponent(`Booking Request - ${house}`);
+  const body=encodeURIComponent(`Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nHouse: ${house}\nCheck-in: ${checkin}\nCheck-out: ${checkout}\nMessage: ${msg}`);
+  window.open(`mailto:vmac88@hotmail.com?subject=${subject}&body=${body}`);
+  document.getElementById('bookingFormFields').style.display='none';
+  document.getElementById('bookingSuccess').style.display='block';
+}
+
+// ══════════════════════════════════════════
+// TRANSLATIONS
+// ══════════════════════════════════════════
+const T={
+it:{nav_home:"Home",nav_about:"La Struttura",nav_houses:"Le Case ▾",nav_exp:"Esperienze",nav_gallery:"Gallery",nav_territory:"Il Territorio",nav_contact:"Contatti",nav_cta:"Prenota Ora",hero_title:'Dove la <em>natura</em> incontra il <em>comfort</em>',hero_text:"Immersi tra ulivi secolari e a pochi passi dal mare, le nostre case offrono un rifugio di pace nel cuore del Salento.",hero_btn1:"Scopri le Case →",hero_btn2:"La Nostra Storia",hero_scroll:"Scopri",feat_parking:"Parcheggio Gratuito",feat_wifi:"Wi-Fi Gratuito",feat_green:"Ampio Spazio Verde",feat_jacuzzi:"Jacuzzi Esterna",feat_shuttle:"Navetta Aeroporto",feat_bike:"Pista Bike Cross",about_label:"La Nostra Storia",about_title:"Dalla Francia al Salento, tra mare, vento e ulivi",about_text1:"Ingegnere edile di formazione, ho lavorato per anni in Francia. Un viaggio in Puglia ha cambiato tutto.",about_text2:"Ogni casa è stata progettata con cura: materiali naturali, colori del paesaggio e dettagli che fanno la differenza.",about_sig:"— Il Fondatore",houses_label:"Alloggi",houses_title:"Le Case di Zeituna Lodge",houses_text:"Di recente costruzione e dotate di tutti i comfort.",badge_pool:"Vasca Privata",badge_largest:"La Più Grande",badge_modern:"Comfort Moderno",badge_olives:"Tra gli Ulivi",guests_4:"👥 Fino a 4",guests_6:"👥 Fino a 6",casa_fav_short:"Camera matrimoniale, cucina attrezzata, vasca esclusiva 2×2.",casa_cel_short:"Due camere, due bagni, ampia veranda con gazebo.",casa_car_short:"Arredo moderno, terrazza con giardino esclusivo.",casa_olea_short:"Intima e raccolta, immersa nell'uliveto.",btn_more:"Scopri di più →",exp_label:"Esperienze",exp_title:"Attività uniche con esperti del luogo",exp_boat:"Escursioni in Barca",exp_boat_desc:"Le calette e grotte del litorale.",exp_bike:"Escursioni in Bici",exp_bike_desc:"Tra masserie e panorami mozzafiato.",exp_cook:"Corso di Cucina",exp_cook_desc:"I segreti della cucina salentina.",why_label:"Perché Scegliere Noi",why_title:"Natura, comfort e mare",why_text1:"Nel cuore della campagna salentina, a soli tre chilometri dal mare.",stat_sea:"Dal mare",stat_land:"Di terreno verde",stat_houses:"Case indipendenti",terr_label:"Il Territorio",terr_page_title:"Scopri il Salento",terr_page_intro:"Il Salento è una terra accogliente ricca di luoghi unici. Soggiornando a Zeituna Lodge vivrete emozioni indimenticabili.",contact_label:"Contatti",contact_title:"Vieni a trovarci",contact_address:"Indirizzo",contact_phone:"Telefono",gallery_title:"Zeituna Lodge in Immagini",form_title:"Richiesta di Prenotazione",form_name:"Nome <span class='req'>*</span>",form_phone:"Telefono <span class='req'>*</span>",form_house:"Casa <span class='req'>*</span>",form_msg:"Messaggio",form_privacy:"Accetto la privacy policy",form_send:"Invia Richiesta",form_ok_title:"Richiesta Inviata!",form_ok_text:"Riceverai una conferma via email. Ti contatteremo al più presto.",footer_desc:"Immersi nella campagna salentina, circondati da ulivi, a soli tre chilometri dal mare.",footer_nav:"Navigazione",footer_houses:"Le Case"},
+en:{nav_home:"Home",nav_about:"The Lodge",nav_houses:"Houses ▾",nav_exp:"Experiences",nav_gallery:"Gallery",nav_territory:"The Area",nav_contact:"Contact",nav_cta:"Book Now",hero_title:'Where <em>nature</em> meets <em>comfort</em>',hero_text:"Nestled among ancient olive trees and steps from the sea, our houses offer a peaceful retreat in Salento.",hero_btn1:"Explore Houses →",hero_btn2:"Our Story",hero_scroll:"Explore",feat_parking:"Free Parking",feat_wifi:"Free Wi-Fi",feat_green:"Large Green Area",feat_jacuzzi:"Outdoor Jacuzzi",feat_shuttle:"Airport Shuttle",feat_bike:"Bike Cross Trail",about_label:"Our Story",about_title:"From France to Salento — sea, wind, olive trees",about_text1:"A civil engineer by training, I spent years in France. A trip to Puglia changed everything.",about_text2:"Every house is thoughtfully designed: natural materials, landscape-inspired colors, and details that make the difference.",about_sig:"— The Founder",houses_label:"Accommodation",houses_title:"The Houses of Zeituna Lodge",houses_text:"Recently built and fully equipped for a relaxing stay.",badge_pool:"Private Pool",badge_largest:"The Largest",badge_modern:"Modern Comfort",badge_olives:"Among the Olives",guests_4:"👥 Up to 4",guests_6:"👥 Up to 6",casa_fav_short:"Double bedroom, equipped kitchen, exclusive 2×2 pool.",casa_cel_short:"Two bedrooms, two bathrooms, large veranda with gazebo.",casa_car_short:"Modern furnishing, terrace with private garden.",casa_olea_short:"Intimate and cozy, nestled in the olive grove.",btn_more:"Learn more →",exp_label:"Experiences",exp_title:"Unique activities with local experts",exp_boat:"Boat Excursions",exp_boat_desc:"Hidden coves and sea caves.",exp_bike:"Bike Tours",exp_bike_desc:"Farmsteads and breathtaking landscapes.",exp_cook:"Cooking Class",exp_cook_desc:"Secrets of Salento cuisine.",why_label:"Why Choose Us",why_title:"Nature, comfort and the sea",why_text1:"In the heart of the Salento countryside, just three kilometers from the sea.",stat_sea:"From the sea",stat_land:"Of green land",stat_houses:"Independent houses",terr_label:"The Area",terr_page_title:"Discover Salento",terr_page_intro:"Salento is a welcoming land full of unique places. Staying at Zeituna Lodge you will experience unforgettable moments.",contact_label:"Contact",contact_title:"Come visit us",contact_address:"Address",contact_phone:"Phone",gallery_title:"Zeituna Lodge in Pictures",form_title:"Booking Request",form_name:"Name <span class='req'>*</span>",form_phone:"Phone <span class='req'>*</span>",form_house:"House <span class='req'>*</span>",form_msg:"Message",form_privacy:"I accept the privacy policy",form_send:"Send Request",form_ok_title:"Request Sent!",form_ok_text:"You will receive a confirmation email. We'll contact you shortly.",footer_desc:"Nestled in the Salento countryside, surrounded by olive trees, three kilometers from the sea.",footer_nav:"Navigation",footer_houses:"The Houses"},
+fr:{nav_home:"Accueil",nav_about:"La Structure",nav_houses:"Les Maisons ▾",nav_exp:"Expériences",nav_gallery:"Galerie",nav_territory:"Le Territoire",nav_contact:"Contact",nav_cta:"Réserver",hero_title:'Où la <em>nature</em> rencontre le <em>confort</em>',hero_text:"Nichées parmi des oliviers centenaires et à quelques pas de la mer, nos maisons offrent un havre de paix au cœur du Salento.",hero_btn1:"Découvrir les Maisons →",hero_btn2:"Notre Histoire",hero_scroll:"Découvrir",feat_parking:"Parking Gratuit",feat_wifi:"Wi-Fi Gratuit",feat_green:"Grand Espace Vert",feat_jacuzzi:"Jacuzzi Extérieur",feat_shuttle:"Navette Aéroport",feat_bike:"Piste Bike Cross",about_label:"Notre Histoire",about_title:"De la France au Salento — mer, vent et oliviers",about_text1:"Ingénieur en génie civil, j'ai travaillé des années en France. Un voyage dans les Pouilles a tout changé.",about_text2:"Chaque maison est conçue avec soin : matériaux naturels, couleurs du paysage et détails qui font la différence.",about_sig:"— Le Fondateur",houses_label:"Hébergements",houses_title:"Les Maisons de Zeituna Lodge",houses_text:"De construction récente et tout confort.",badge_pool:"Bassin Privé",badge_largest:"La Plus Grande",badge_modern:"Confort Moderne",badge_olives:"Parmi les Oliviers",guests_4:"👥 Jusqu'à 4",guests_6:"👥 Jusqu'à 6",casa_fav_short:"Chambre double, cuisine équipée, bassin 2×2 exclusif.",casa_cel_short:"Deux chambres, deux salles de bain, grande véranda avec gazebo.",casa_car_short:"Mobilier moderne, terrasse avec jardin privatif.",casa_olea_short:"Intime et chaleureuse, nichée dans l'oliveraie.",btn_more:"En savoir plus →",exp_label:"Expériences",exp_title:"Activités uniques avec des experts locaux",exp_boat:"Excursions en Bateau",exp_boat_desc:"Criques cachées et grottes marines.",exp_bike:"Excursions à Vélo",exp_bike_desc:"Masseries et panoramas à couper le souffle.",exp_cook:"Cours de Cuisine",exp_cook_desc:"Les secrets de la cuisine du Salento.",why_label:"Pourquoi Nous Choisir",why_title:"Nature, confort et mer",why_text1:"Au cœur de la campagne du Salento, à seulement trois kilomètres de la mer.",stat_sea:"De la mer",stat_land:"De terrain vert",stat_houses:"Maisons indépendantes",terr_label:"Le Territoire",terr_page_title:"Découvrez le Salento",terr_page_intro:"Le Salento est une terre accueillante riche en lieux uniques. En séjournant à Zeituna Lodge vous vivrez des émotions inoubliables.",contact_label:"Contact",contact_title:"Venez nous rendre visite",contact_address:"Adresse",contact_phone:"Téléphone",gallery_title:"Zeituna Lodge en Images",form_title:"Demande de Réservation",form_name:"Nom <span class='req'>*</span>",form_phone:"Téléphone <span class='req'>*</span>",form_house:"Maison <span class='req'>*</span>",form_msg:"Message",form_privacy:"J'accepte la politique de confidentialité",form_send:"Envoyer la Demande",form_ok_title:"Demande Envoyée !",form_ok_text:"Vous recevrez un email de confirmation. Nous vous contacterons rapidement.",footer_desc:"Nichés dans la campagne du Salento, entourés d'oliviers, à trois kilomètres de la mer.",footer_nav:"Navigation",footer_houses:"Les Maisons"}
+};
+let currentLang='it';
+function setLang(lang){
+  currentLang=lang;document.documentElement.lang=lang;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.toggle('active',b.textContent.trim().toLowerCase()===lang));
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');if(T[lang]?.[k]!==undefined)el.textContent=T[lang][k]});
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{const k=el.getAttribute('data-i18n-html');if(T[lang]?.[k]!==undefined)el.innerHTML=T[lang][k]});
+  // Re-render form labels that have HTML
+  ['form_name','form_phone','form_house'].forEach(k=>{const el=document.querySelector(`[data-i18n="${k}"]`);if(el&&T[lang]?.[k])el.innerHTML=T[lang][k]});
+  if(currentHouseKey&&document.getElementById('page-house').classList.contains('active'))showHouse(currentHouseKey);
+  if(document.getElementById('page-territory').classList.contains('active'))renderTerritory();
+}
+
+// ══════════════════════════════════════════
+// GENERAL
+// ══════════════════════════════════════════
+const header=document.getElementById('header');
+window.addEventListener('scroll',()=>header.classList.toggle('scrolled',window.scrollY>50));
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.15,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.anim').forEach(el=>observer.observe(el));
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('active')));
 </script>
 </body>
 </html>
