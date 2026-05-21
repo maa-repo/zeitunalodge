@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Zeituna Lodge — Salento, Puglia</title>
-<link rel="icon" type="image/png" href="https://www.zeitunalodge.it/wp-content/uploads/2023/05/cropped-cropped-cropped-zeituna_lodge_torre_lapillo-270x270.png">
-<link rel="apple-touch-icon" href="https://www.zeitunalodge.it/wp-content/uploads/2023/05/cropped-cropped-cropped-zeituna_lodge_torre_lapillo-270x270.png">
+<link rel="icon" type="image/png" href="images/cropped-cropped-cropped-cropped-zeituna_lodge_torre_lapillo.png">
+<link rel="apple-touch-icon" href="images/cropped-cropped-cropped-cropped-zeituna_lodge_torre_lapillo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -66,8 +66,15 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:14px c
 .menu-toggle{display:none;flex-direction:column;gap:5px;padding:8px}
 .menu-toggle span{width:24px;height:2px;background:var(--charcoal);border-radius:2px;transition:.3s}
 .hero{position:relative;height:92vh;min-height:500px;display:flex;align-items:flex-end;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background-position:center;background-size:cover;background-repeat:no-repeat;transform:scale(1.05);animation:heroZoom 20s ease forwards}
-@keyframes heroZoom{to{transform:scale(1)}}
+.hero-slides{position:absolute;inset:0}
+.hero-slide{position:absolute;inset:0;background-position:center;background-size:cover;background-repeat:no-repeat;opacity:0;transition:opacity 1.5s ease;transform:scale(1.05)}
+.hero-slide.active{opacity:1;animation:heroZoom 8s ease forwards}
+@keyframes heroZoom{from{transform:scale(1.05)}to{transform:scale(1)}}
+.hero-text-box{background:rgba(44,58,46,.45);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.12);border-radius:10px;padding:16px 24px;max-width:480px;margin-bottom:32px}
+.hero-text-box p{font-size:1.05rem;color:rgba(255,255,255,.92);line-height:1.7;margin:0;text-shadow:0 1px 3px rgba(0,0,0,.3)}
+.hero-dots{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:10px}
+.hero-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.35);cursor:pointer;transition:all .3s;border:none}
+.hero-dot.active{background:var(--terracotta-light);transform:scale(1.3)}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(44,58,46,.1) 0%,rgba(44,58,46,.2) 40%,rgba(44,58,46,.7) 100%)}
 .hero-content{position:relative;z-index:2;padding:clamp(40px,8vw,80px) clamp(20px,5vw,60px);max-width:700px;animation:fadeUp 1s ease .3s both}
 .hero-label{font-family:var(--font-body);font-size:.7rem;font-weight:500;letter-spacing:.3em;text-transform:uppercase;color:var(--terracotta-light);margin-bottom:16px}
@@ -193,6 +200,7 @@ nav{display:flex;justify-content:space-between;align-items:center;padding:14px c
 .back-btn{display:inline-flex;align-items:center;gap:8px;color:var(--terracotta);font-size:.88rem;font-weight:500;margin-bottom:30px;cursor:pointer;transition:gap .3s}
 .back-btn:hover{gap:12px}
 /* HOUSE DETAIL */
+.hero-bg{position:absolute;inset:0;background-position:center;background-size:cover;background-repeat:no-repeat;transform:scale(1.05);animation:heroZoom 20s ease forwards}
 .house-hero{position:relative;height:55vh;min-height:350px;display:flex;align-items:flex-end;overflow:hidden}
 .house-hero .hero-bg{animation:heroZoom 20s ease forwards}
 .house-hero .hero-content{max-width:600px}
@@ -307,18 +315,24 @@ footer{background:var(--olive-dark);color:rgba(255,255,255,.6);padding:60px 0 30
 <div class="page active" id="page-home">
 
 <section class="hero" id="home">
-<div class="hero-bg" style="background-image:url('https://www.zeitunalodge.it/wp-content/uploads/2023/06/MZ6_9655-scaled.jpg')"></div>
+<div class="hero-slides" id="heroSlides">
+<div class="hero-slide active" style="background-image:url('images/MZ6_9655-scaled.jpg')"></div>
+<div class="hero-slide" style="background-image:url('images/20250504_120427-scaled.jpg')"></div>
+<div class="hero-slide" style="background-image:url('images/20250701_183701-scaled.jpg')"></div>
+<div class="hero-slide" style="background-image:url('images/20230621_155745-scaled.jpg')"></div>
+<div class="hero-slide" style="background-image:url('images/20240612_142649-1-scaled.jpg')"></div>
+</div>
 <div class="hero-overlay"></div>
 <div class="hero-content">
 <div class="hero-label">Porto Cesareo · Salento · Puglia</div>
 <h1 data-i18n-html="hero_title">Dove la <em>natura</em> incontra il <em>comfort</em></h1>
-<p data-i18n="hero_text">Immersi tra ulivi secolari e a pochi passi dal mare, le nostre case offrono un rifugio di pace nel cuore del Salento.</p>
+<div class="hero-text-box"><p data-i18n="hero_text">Immersi tra ulivi secolari e a pochi passi dal mare, le nostre case offrono un rifugio di pace nel cuore del Salento.</p></div>
 <div class="hero-btns">
 <a href="#" class="btn-primary" data-i18n="hero_btn1" onclick="event.preventDefault();document.getElementById('houses').scrollIntoView({behavior:'smooth'})">Scopri le Case →</a>
 <a href="#" class="btn-outline" data-i18n="hero_btn2" onclick="event.preventDefault();document.getElementById('about').scrollIntoView({behavior:'smooth'})">La Nostra Storia</a>
 </div>
 </div>
-<div class="hero-scroll"><span data-i18n="hero_scroll">Scopri</span><div class="scroll-line"></div></div>
+<div class="hero-dots" id="heroDots"></div>
 </section>
 
 <div class="features-strip"><div class="features-grid">
@@ -331,7 +345,7 @@ footer{background:var(--olive-dark);color:rgba(255,255,255,.6);padding:60px 0 30
 </div></div>
 
 <section class="intro" id="about"><div class="container"><div class="intro-grid">
-<div class="intro-image anim"><img src="https://www.zeitunalodge.it/wp-content/uploads/2025/06/20250504_115832-scaled.jpg" alt="Zeituna Lodge" loading="lazy"><div class="intro-image-accent"></div></div>
+<div class="intro-image anim"><img src="images/MZ6_9655-scaled.jpg" alt="Zeituna Lodge" loading="lazy"><div class="intro-image-accent"></div></div>
 <div class="intro-content anim anim-delay-1">
 <div class="section-label" data-i18n="about_label">La Nostra Storia</div>
 <h2 class="section-title" data-i18n="about_title">Dalla Francia al Salento, tra mare, vento e ulivi</h2>
@@ -344,19 +358,19 @@ footer{background:var(--olive-dark);color:rgba(255,255,255,.6);padding:60px 0 30
 <section class="houses" id="houses"><div class="container">
 <div class="houses-header anim"><div class="section-label" data-i18n="houses_label">Alloggi</div><h2 class="section-title" data-i18n="houses_title">Le Case di Zeituna Lodge</h2><p class="section-text" data-i18n="houses_text">Di recente costruzione e dotate di tutti i comfort.</p></div>
 <div class="houses-grid">
-<div class="house-card anim" onclick="showHouse('favolosa')"><div class="house-card-img"><img src="https://www.zeitunalodge.it/wp-content/uploads/2025/12/20251123_144207-scaled.jpg" alt="Casa Favolosa" loading="lazy"><div class="house-badge" data-i18n="badge_pool">Vasca Privata</div></div><div class="house-card-body"><h3>Casa Favolosa</h3><div class="house-meta"><span>📐 35 m²</span><span data-i18n="guests_4">👥 Fino a 4</span></div><p data-i18n="casa_fav_short">Camera matrimoniale, cucina attrezzata, vasca esclusiva 2×2.</p><span class="btn-secondary" data-i18n="btn_more">Scopri di più →</span></div></div>
-<div class="house-card anim anim-delay-1" onclick="showHouse('cellina')"><div class="house-card-img"><img src="https://www.zeitunalodge.it/wp-content/uploads/2025/06/20240615_104417-scaled.jpg" alt="Casa Cellina" loading="lazy"><div class="house-badge" data-i18n="badge_largest">La Più Grande</div></div><div class="house-card-body"><h3>Casa Cellina</h3><div class="house-meta"><span>📐 65 m²</span><span data-i18n="guests_6">👥 Fino a 6</span></div><p data-i18n="casa_cel_short">Due camere, due bagni, ampia veranda con gazebo.</p><span class="btn-secondary" data-i18n="btn_more">Scopri di più →</span></div></div>
-<div class="house-card anim anim-delay-2" onclick="showHouse('carolea')"><div class="house-card-img"><img src="https://www.zeitunalodge.it/wp-content/uploads/2025/12/20251202_141425-scaled.jpg" alt="Casa Carolea" loading="lazy"><div class="house-badge" data-i18n="badge_modern">Comfort Moderno</div></div><div class="house-card-body"><h3>Casa Carolea</h3><div class="house-meta"><span>📐 40 m²</span><span data-i18n="guests_6">👥 Fino a 6</span></div><p data-i18n="casa_car_short">Arredo moderno, terrazza con giardino esclusivo.</p><span class="btn-secondary" data-i18n="btn_more">Scopri di più →</span></div></div>
-<div class="house-card anim anim-delay-3" onclick="showHouse('olea')"><div class="house-card-img"><img src="https://www.zeitunalodge.it/wp-content/uploads/2025/12/MRZ_6236.jpg" alt="Casa Olea" loading="lazy"><div class="house-badge" data-i18n="badge_olives">Tra gli Ulivi</div></div><div class="house-card-body"><h3>Casa Olea</h3><div class="house-meta"><span>📐 35 m²</span><span data-i18n="guests_4">👥 Fino a 4</span></div><p data-i18n="casa_olea_short">Intima e raccolta, immersa nell'uliveto.</p><span class="btn-secondary" data-i18n="btn_more">Scopri di più →</span></div></div>
+<div class="house-card anim" onclick="showHouse('favolosa')"><div class="house-card-img"><img src="images/20251123_144207-scaled.jpg" alt="Casa Favolosa" loading="lazy"><div class="house-badge" data-i18n="badge_pool">Vasca Privata</div></div><div class="house-card-body"><h3>Casa Favolosa</h3><div class="house-meta"><span>📐 35 m²</span><span data-i18n="guests_4">👥 Fino a 4</span></div><p data-i18n="casa_fav_short">Camera matrimoniale, cucina attrezzata, vasca esclusiva 2×2.</p><span class="btn-secondary" data-i18n="btn_more">Scopri di più →</span></div></div>
+<div class="house-card anim anim-delay-1" onclick="showHouse('cellina')"><div class="house-card-img"><img src="images/20240615_104417-scaled.jpg" alt="Casa Cellina" loading="lazy"><div class="house-badge" data-i18n="badge_largest">La Più Grande</div></div><div class="house-card-body"><h3>Casa Cellina</h3><div class="house-meta"><span>📐 65 m²</span><span data-i18n="guests_6">👥 Fino a 6</span></div><p data-i18n="casa_cel_short">Due camere, due bagni, ampia veranda con gazebo.</p><span class="btn-secondary" data-i18n="btn_more">Scopri di più →</span></div></div>
+<div class="house-card anim anim-delay-2" onclick="showHouse('carolea')"><div class="house-card-img"><img src="images/20251202_141425-scaled.jpg" alt="Casa Carolea" loading="lazy"><div class="house-badge" data-i18n="badge_modern">Comfort Moderno</div></div><div class="house-card-body"><h3>Casa Carolea</h3><div class="house-meta"><span>📐 40 m²</span><span data-i18n="guests_6">👥 Fino a 6</span></div><p data-i18n="casa_car_short">Arredo moderno, terrazza con giardino esclusivo.</p><span class="btn-secondary" data-i18n="btn_more">Scopri di più →</span></div></div>
+<div class="house-card anim anim-delay-3" onclick="showHouse('olea')"><div class="house-card-img"><img src="images/MRZ_6236-scaled.jpg" alt="Casa Olea" loading="lazy"><div class="house-badge" data-i18n="badge_olives">Tra gli Ulivi</div></div><div class="house-card-body"><h3>Casa Olea</h3><div class="house-meta"><span>📐 35 m²</span><span data-i18n="guests_4">👥 Fino a 4</span></div><p data-i18n="casa_olea_short">Intima e raccolta, immersa nell'uliveto.</p><span class="btn-secondary" data-i18n="btn_more">Scopri di più →</span></div></div>
 </div>
 </div></section>
 
 <section class="experience" id="experiences"><div class="container">
 <div class="anim"><div class="section-label" data-i18n="exp_label">Esperienze</div><h2 class="section-title" data-i18n="exp_title">Attività uniche con esperti del luogo</h2></div>
 <div class="experience-grid">
-<div class="exp-card anim"><img src="https://www.zeitunalodge.it/wp-content/uploads/2023/06/esperienza_salento_open_boat_vivi_salento-667x445-1-300x200.jpg" alt="Boat" loading="lazy"><div class="exp-card-overlay"><h3 data-i18n="exp_boat">Escursioni in Barca</h3><p data-i18n="exp_boat_desc">Scopri le calette e le grotte del litorale.</p></div></div>
-<div class="exp-card anim anim-delay-1"><img src="https://www.zeitunalodge.it/wp-content/uploads/2023/06/escursione-bici-salento-porto-cesareo-300x200.jpg" alt="Bike" loading="lazy"><div class="exp-card-overlay"><h3 data-i18n="exp_bike">Escursioni in Bici</h3><p data-i18n="exp_bike_desc">Pedalate tra masserie e panorami mozzafiato.</p></div></div>
-<div class="exp-card anim anim-delay-2"><img src="https://www.zeitunalodge.it/wp-content/uploads/2023/06/esperienza_corso_cucina_salento_4-300x200.jpg" alt="Cooking" loading="lazy"><div class="exp-card-overlay"><h3 data-i18n="exp_cook">Corso di Cucina</h3><p data-i18n="exp_cook_desc">I segreti della cucina salentina con chef esperti.</p></div></div>
+<div class="exp-card anim"><img src="images/esperienza_salento_open_boat_vivi_salento-667x445-1.jpg" alt="Boat" loading="lazy"><div class="exp-card-overlay"><h3 data-i18n="exp_boat">Escursioni in Barca</h3><p data-i18n="exp_boat_desc">Scopri le calette e le grotte del litorale.</p></div></div>
+<div class="exp-card anim anim-delay-1"><img src="images/escursione-bici-salento-porto-cesareo.jpg" alt="Bike" loading="lazy"><div class="exp-card-overlay"><h3 data-i18n="exp_bike">Escursioni in Bici</h3><p data-i18n="exp_bike_desc">Pedalate tra masserie e panorami mozzafiato.</p></div></div>
+<div class="exp-card anim anim-delay-2"><img src="images/esperienza_corso_cucina_salento_4.jpg" alt="Cooking" loading="lazy"><div class="exp-card-overlay"><h3 data-i18n="exp_cook">Corso di Cucina</h3><p data-i18n="exp_cook_desc">I segreti della cucina salentina con chef esperti.</p></div></div>
 </div>
 </div></section>
 
@@ -371,7 +385,7 @@ footer{background:var(--olive-dark);color:rgba(255,255,255,.6);padding:60px 0 30
 <div><div class="stat-number">4</div><div class="stat-label" data-i18n="stat_houses">Case indipendenti</div></div>
 </div>
 </div>
-<div class="story-image anim anim-delay-1"><img src="https://www.zeitunalodge.it/wp-content/uploads/2025/06/20240612_142204-scaled.jpg" alt="Salento" loading="lazy"></div>
+<div class="story-image anim anim-delay-1"><img src="images/20240612_142204-scaled.jpg" alt="Salento" loading="lazy"></div>
 </div></div></section>
 
 <!-- CONTACT WITH BOOKING FORM -->
@@ -480,68 +494,115 @@ footer{background:var(--olive-dark);color:rgba(255,255,255,.6);padding:60px 0 30
 // DATA
 // ══════════════════════════════════════════
 const GALLERY_PHOTOS = [
-  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_091624.jpg",
-  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_091557.jpg",
-  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_091632.jpg",
-  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_091712.jpg",
-  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_091529.jpg",
-  "https://www.zeitunalodge.it/wp-content/gallery/gallery/1_20250629_091632.jpg",
-  "https://www.zeitunalodge.it/wp-content/gallery/gallery/1_20250629_091712.jpg",
-  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_091902.jpg",
-  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_092019.jpg",
-  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_092135.jpg",
-  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_092352.jpg",
-  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_092225.jpg",
-  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_092244.jpg",
-  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_092542.jpg",
-  "https://www.zeitunalodge.it/wp-content/gallery/gallery/20250629_092526.jpg"
-];
+  "images/20231009_175847-scaled.jpg",
+  "images/20231009_175808-scaled.jpg",
+  "images/20231009_175841-scaled.jpg",
+  "images/20231009_175919-scaled.jpg",
+  "images/20250504_115832-scaled.jpg",
+  "images/20250504_120427-scaled.jpg",
+  "images/20250504_120446-scaled.jpg",
+  "images/20250701_174526-scaled.jpg",
+  "images/20250701_174754-scaled.jpg",
+  "images/20250701_183701-scaled.jpg",
+  "images/20251123_144146-scaled.jpg",
+  "images/20251123_144207-scaled.jpg",
+  "images/20251123_144318-scaled.jpg",
+  "images/20251123_144421-scaled.jpg",
+  "images/20251126_115426-scaled.jpg",
+  "images/20251126_115514-scaled.jpg",
+  "images/20251126_115532-scaled.jpg",
+  "images/20251126_115611-scaled.jpg",
+  "images/20251126_115626-scaled.jpg",
+  "images/20251126_120200-scaled.jpg",
+  "images/20250402_130714-scaled.jpg",
+  "images/20250402_130732-scaled.jpg",
+  "images/20251202_141425-scaled.jpg",
+  "images/20251116_113303-scaled.jpg",
+  "images/20240612_142649-1-scaled.jpg",
+  "images/20240612_162036-scaled.jpg",
+  "images/20240612_162208-scaled.jpg",
+  "images/20240612_162404-scaled.jpg",
+  "images/20240612_155214-scaled.jpg",
+  "images/20240612_155409-scaled.jpg",
+  "images/20240612_155447-scaled.jpg",
+  "images/20240612_142426-scaled.jpg",
+  "images/20240612_142505-scaled.jpg",
+  "images/20240612_142517-scaled.jpg",
+  "images/20240612_142555-scaled.jpg",
+  "images/20240612_1420070-scaled.jpg",
+  "images/20240612_161956-scaled.jpg",
+  "images/20240612_162007-scaled.jpg",
+  "images/20240615_104417-scaled.jpg",
+  "images/20230621_155745-scaled.jpg",
+  "images/20230720_131440-scaled.jpg",
+  "images/20230720_131835-scaled.jpg",
+  "images/20230720_131843-scaled.jpg",
+  "images/20240612_142304-scaled.jpg",
+  "images/20240612_142813-scaled.jpg"
+,
+  "images/20251202_141425-scaled.jpg",
+  "images/20251202_141004-scaled.jpg",
+  "images/20251202_135136-scaled.jpg",
+  "images/20251202_135014-scaled.jpg",
+  "images/camera_carolea_zeituna_lodge.jpg",
+  "images/casa_favolosa_zeituna_lodge.jpeg",
+  "images/20251126_120258-scaled.jpg",
+  "images/20251126_120314-scaled.jpg",
+  "images/20251126_120325-scaled.jpg",
+  "images/20251126_120419-scaled.jpg",
+  "images/MRZ_6236-scaled.jpg",
+  "images/MRZ_6201-scaled.jpg",
+  "images/MRZ_6217-scaled.jpg",
+  "images/MRZ_6217-1-scaled.jpg",
+  "images/MZ6_9543-scaled.jpg",
+  "images/MZ6_9655-scaled.jpg",
+  "images/PHOTO-2023-05-15-16-25-26.jpg"];
 
 const TERRITORY = {
   marina: {
     name:{it:"Area Marina Protetta",en:"Marine Protected Area",fr:"Aire Marine Protégée"},
-    img:"https://www.zeitunalodge.it/wp-content/uploads/2023/06/001-1.jpg",
+    img:"images/001-1.jpg",
     short:{it:"Terza area marina più grande d'Italia con 16.500 ettari di superficie, magnifiche torri costiere e siti archeologici sommersi.",en:"Italy's third largest marine protected area spanning 16,500 hectares, with magnificent coastal towers and underwater archaeological sites.",fr:"Troisième plus grande aire marine d'Italie avec 16 500 hectares, de magnifiques tours côtières et des sites archéologiques sous-marins."},
     desc:{it:"L'area marina protetta di Porto Cesareo si colloca al terzo posto tra le aree marine più grandi d'Italia con i suoi 16.500 ettari. Istituita nel 1997, è suddivisa in tre zone con differente grado di tutela. Lungo la costiera ionica si trovano magnifiche torri sorte intorno al 1500 per difendere la costa dai Turchi e dai Pirati: Torre Cesarea, Torre Lapillo e Torre Chianca. A Torre Chianca, a soli 4 metri di profondità, giacciono 5 colonne monolitiche del II secolo d.C., un sito archeologico sommerso di un'imbarcazione proveniente dall'isola greca di Eubea.",en:"The Porto Cesareo marine protected area ranks third among Italy's largest, spanning 16,500 hectares. Established in 1997, it is divided into three zones with different levels of protection. Along the Ionian coast stand magnificent towers built around 1500 to defend against Turkish and pirate attacks: Torre Cesarea, Torre Lapillo and Torre Chianca. At Torre Chianca, just 4 meters deep, lie 5 monolithic columns from the 2nd century AD — an underwater archaeological site from a vessel that came from the Greek island of Euboea.",fr:"L'aire marine protégée de Porto Cesareo se classe troisième parmi les plus grandes d'Italie avec 16 500 hectares. Créée en 1997, elle est divisée en trois zones de protection. Le long de la côte ionienne se dressent de magnifiques tours construites vers 1500 pour défendre la côte contre les Turcs et les pirates : Torre Cesarea, Torre Lapillo et Torre Chianca. À Torre Chianca, à seulement 4 mètres de profondeur, reposent 5 colonnes monolithiques du IIe siècle ap. J.-C."},
-    photos:["https://www.zeitunalodge.it/wp-content/gallery/foto-articolo-area-maria-protetta/002-2.jpg","https://www.zeitunalodge.it/wp-content/gallery/foto-articolo-area-maria-protetta/005.jpg","https://www.zeitunalodge.it/wp-content/gallery/foto-articolo-area-maria-protetta/001-2.jpg"]
+    photos:["images/001-1.jpg","images/001.jpg","images/001-1.jpg"]
   },
   porto: {
     name:{it:"Porto Cesareo",en:"Porto Cesareo",fr:"Porto Cesareo"},
-    img:"https://www.zeitunalodge.it/wp-content/uploads/2023/06/002.jpg",
+    img:"images/002.jpg",
     short:{it:"18 km di costa con spiagge sabbiose, acque cristalline color smeraldo, dune, isolotti e la celebre Isola dei Conigli.",en:"18 km of coastline with sandy beaches, crystal-clear emerald waters, dunes, islets and the famous Rabbit Island.",fr:"18 km de littoral avec des plages de sable, des eaux cristallines émeraude, des dunes, des îlots et la célèbre Île aux Lapins."},
     desc:{it:"Porto Cesareo si colloca sulla costa ionica del Salento. I suoi numerosi arenili si allungano per 18 km regalando acque limpide color smeraldo. Il territorio è caratterizzato da sabbia, dune ricche di vegetazione mediterranea, scogli e isolotti. Tra gli isolotti, l'Isola Grande (Isola dei Conigli) ricoperta di pini d'Aleppo, e l'Isola della Malva ospitano oltre 200 specie vegetali. La spiaggia più celebre è quella delle Dune, con un cordone di dune costiere che protegge l'ultimo lembo di spiaggia libera, estendendosi per circa 1 km.",en:"Porto Cesareo sits on the Ionian coast of Salento. Its numerous beaches stretch for 18 km offering crystal-clear emerald waters. The territory features sand, dunes rich in Mediterranean vegetation, rocks and islets. Among them, Isola Grande (Rabbit Island) covered in Aleppo pines, and Isola della Malva host over 200 plant species. The most famous beach is Le Dune, with a ridge of coastal dunes protecting the last stretch of free beach, extending about 1 km.",fr:"Porto Cesareo se situe sur la côte ionienne du Salento. Ses plages s'étendent sur 18 km offrant des eaux cristallines émeraude. Le territoire comprend sable, dunes riches en végétation méditerranéenne, rochers et îlots. Parmi eux, l'Isola Grande (Île aux Lapins) couverte de pins d'Alep, et l'Isola della Malva abritent plus de 200 espèces végétales. La plage la plus célèbre est celle des Dunes, longue d'environ 1 km."},
-    photos:["https://www.zeitunalodge.it/wp-content/gallery/porto-cesareo/001-1.jpg","https://www.zeitunalodge.it/wp-content/gallery/porto-cesareo/002-1.jpg","https://www.zeitunalodge.it/wp-content/gallery/porto-cesareo/008-1.jpg"]
+    photos:["images/001-1.jpg","images/002.jpg","images/001.jpg"]
   },
   lecce: {
     name:{it:"Lecce: La Signora del Barocco",en:"Lecce: The Lady of Baroque",fr:"Lecce : La Dame du Baroque"},
-    img:"https://www.zeitunalodge.it/wp-content/uploads/2023/06/003.jpg",
+    img:"images/003.jpg",
     short:{it:"La 'Firenze del Sud' con la sua straordinaria architettura barocca in pietra leccese dorata e un centro storico senza uguali.",en:"The 'Florence of the South' with its extraordinary baroque architecture in golden Lecce stone and an unparalleled historic center.",fr:"La 'Florence du Sud' avec son extraordinaire architecture baroque en pierre de Lecce dorée et un centre historique sans pareil."},
     desc:{it:"Lecce, detta la 'Signora del Barocco' e la 'Firenze del Sud', è una delle città più interessanti della Puglia per la sua architettura seicentesca. Di origini antiche, conobbe particolare splendore durante il Regno di Napoli, quando si sviluppò il celebre 'barocco leccese', caratterizzato da una fastosa scenografia ornamentale. La pietra leccese, un calcare tenero e compatto dai colori caldi e dorati, si presta alla lavorazione dello scalpellino e nel tempo assume una patina dorata resistente. È sufficiente passeggiare per il centro storico per ammirare come il tempo abbia fuso stili e forme in grande armonia.",en:"Lecce, known as the 'Lady of Baroque' and the 'Florence of the South', is one of Puglia's most fascinating cities for its 17th-century architecture. With ancient origins, it flourished during the Kingdom of Naples, when the celebrated 'Lecce baroque' developed, featuring lavish ornamental scenography. Lecce stone, a soft and compact limestone with warm golden tones, lends itself to chisel work and acquires a resistant golden patina over time. Simply walking through the historic center reveals how time has blended styles and forms into great harmony.",fr:"Lecce, surnommée la 'Dame du Baroque' et la 'Florence du Sud', est l'une des villes les plus fascinantes des Pouilles pour son architecture du XVIIe siècle. Aux origines anciennes, elle a connu son apogée sous le Royaume de Naples, avec le développement du célèbre 'baroque de Lecce'. La pierre de Lecce, un calcaire tendre et compact aux tons chauds et dorés, se prête au travail du ciseau et acquiert une patine dorée résistante au fil du temps."},
-    photos:["https://www.zeitunalodge.it/wp-content/gallery/lecce-la-signora-del-barocco/005-2.jpg","https://www.zeitunalodge.it/wp-content/gallery/lecce-la-signora-del-barocco/006-2.jpg","https://www.zeitunalodge.it/wp-content/gallery/lecce-la-signora-del-barocco/002-2.jpg"]
+    photos:["images/003.jpg","images/003.jpg","images/003.jpg"]
   }
 };
 
 const HOUSES = {
-  favolosa:{name:"Casa Favolosa",size:"35 m²",guests:{it:"Fino a 4 ospiti",en:"Up to 4 guests",fr:"Jusqu'à 4 personnes"},heroImg:"https://www.zeitunalodge.it/wp-content/uploads/2025/12/20251123_144207-scaled.jpg",
+  favolosa:{name:"Casa Favolosa",size:"35 m²",guests:{it:"Fino a 4 ospiti",en:"Up to 4 guests",fr:"Jusqu'à 4 personnes"},heroImg:"images/20251123_144207-scaled.jpg",
     desc:{it:"Casa Favolosa offre 35mq su un unico piano con camera matrimoniale, armadio e cassettiera. Bagno con doccia. Sala pranzo e cucina in ambiente unico e versatile. Divano letto disponibile con supplemento. Accesso esclusivo alla vasca 2×2 nella veranda solarium. Accesso libero alla vasca idromassaggio nell'uliveto e alla pista bike cross con bici fornite.",en:"Casa Favolosa offers 35sqm on a single floor with double bedroom, wardrobe and chest of drawers. Bathroom with shower. Dining and kitchen in one versatile space. Sofa bed available with supplement. Exclusive access to the 2×2 pool on the sun terrace. Free access to the outdoor hot tub in the olive grove and bike cross track with bikes provided.",fr:"Casa Favolosa offre 35m² de plain-pied avec chambre double, armoire et commode. Salle de bain avec douche. Coin repas et cuisine en espace unique. Canapé-lit disponible avec supplément. Accès exclusif au bassin 2×2 sur la véranda solarium. Accès libre au jacuzzi dans l'oliveraie et à la piste de bike cross avec vélos fournis."},
     amenities:{it:["Wi-Fi","Parcheggio","Cucina attrezzata","Forno microonde","Caffettiera","Bollitore","1 Camera matrimoniale","1 Divano letto","1 Bagno con doccia","TV","Ampia terrazza","Vasca 2×2 esclusiva"],en:["Wi-Fi","Parking","Equipped kitchen","Microwave","Coffee maker","Kettle","1 Double bedroom","1 Sofa bed","1 Bathroom w/ shower","TV","Large terrace","Exclusive 2×2 pool"],fr:["Wi-Fi","Parking","Cuisine équipée","Micro-ondes","Cafetière","Bouilloire","1 Chambre double","1 Canapé-lit","1 SdB avec douche","TV","Grande terrasse","Bassin 2×2 exclusif"]},
     highlights:{it:[{icon:"🛁",title:"Vasca Esclusiva",text:"Vasca 2×2 privata"},{icon:"📐",title:"35 m²",text:"Piano unico"},{icon:"🐕",title:"Pet Friendly",text:"Cani < 10kg"}],en:[{icon:"🛁",title:"Private Pool",text:"Exclusive 2×2 tub"},{icon:"📐",title:"35 m²",text:"Single floor"},{icon:"🐕",title:"Pet Friendly",text:"Dogs < 10kg"}],fr:[{icon:"🛁",title:"Bassin Privé",text:"Bassin 2×2 exclusif"},{icon:"📐",title:"35 m²",text:"Plain-pied"},{icon:"🐕",title:"Pet Friendly",text:"Chiens < 10kg"}]},
-    photos:["https://www.zeitunalodge.it/wp-content/uploads/2025/12/20251123_144207-scaled.jpg","https://www.zeitunalodge.it/wp-content/gallery/casa-favolosa-10-posti/20251126_120258.jpg","https://www.zeitunalodge.it/wp-content/uploads/2023/06/MZ6_9655-scaled.jpg","https://www.zeitunalodge.it/wp-content/uploads/2025/06/20240612_142813-scaled.jpg"]},
-  carolea:{name:"Casa Carolea",size:"40 m²",guests:{it:"Fino a 6 ospiti",en:"Up to 6 guests",fr:"Jusqu'à 6 personnes"},heroImg:"https://www.zeitunalodge.it/wp-content/uploads/2025/12/20251202_141425-scaled.jpg",
+    photos:["images/20251123_144207-scaled.jpg","images/20240612_161956-scaled.jpg","images/20231009_175847-scaled.jpg","images/20240612_142813-scaled.jpg"]},
+  carolea:{name:"Casa Carolea",size:"40 m²",guests:{it:"Fino a 6 ospiti",en:"Up to 6 guests",fr:"Jusqu'à 6 personnes"},heroImg:"images/20251202_141425-scaled.jpg",
     desc:{it:"Casa Carolea ospita 6 persone in 40mq con arredo moderno. Terrazza e ampio giardino esclusivo. Soggiorno con divano letto e zona pranzo, cucina completa. Camera con letto matrimoniale e letto a castello. Bagno con doccia. Accesso esclusivo alla vasca esterna 2×2 e alla vasca idromassaggio nell'uliveto.",en:"Casa Carolea accommodates 6 guests in 40sqm with modern furnishing. Terrace and large private garden. Living room with sofa bed and dining area, fully equipped kitchen. Bedroom with double bed and bunk bed. Bathroom with shower. Exclusive access to outdoor 2×2 pool and shared hot tub in the olive grove.",fr:"Casa Carolea accueille 6 personnes sur 40m² avec mobilier moderne. Terrasse et grand jardin privatif. Séjour avec canapé-lit et coin repas, cuisine équipée. Chambre avec lit double et lits superposés. Salle de bain avec douche. Accès exclusif au bassin 2×2 et au jacuzzi dans l'oliveraie."},
     amenities:{it:["Wi-Fi","Parcheggio","Letto matrimoniale","Letti a castello","Divano letto","Bagno con doccia","Frigo","Forno microonde","Caffettiera","Bollitore","TV","Terrazza","Giardino esclusivo","Vasca 2×2"],en:["Wi-Fi","Parking","Double bed","Bunk beds","Sofa bed","Bathroom w/ shower","Fridge","Microwave","Coffee maker","Kettle","TV","Terrace","Private garden","2×2 pool"],fr:["Wi-Fi","Parking","Lit double","Lits superposés","Canapé-lit","SdB avec douche","Réfrigérateur","Micro-ondes","Cafetière","Bouilloire","TV","Terrasse","Jardin privatif","Bassin 2×2"]},
     highlights:{it:[{icon:"🌳",title:"Giardino Privato",text:"Terrazza e giardino esclusivi"},{icon:"📐",title:"40 m²",text:"Arredo moderno"},{icon:"👨‍👩‍👧‍👦",title:"Famiglia",text:"Fino a 6 ospiti"}],en:[{icon:"🌳",title:"Private Garden",text:"Exclusive terrace & garden"},{icon:"📐",title:"40 m²",text:"Modern furnishing"},{icon:"👨‍👩‍👧‍👦",title:"Family",text:"Up to 6 guests"}],fr:[{icon:"🌳",title:"Jardin Privé",text:"Terrasse et jardin exclusifs"},{icon:"📐",title:"40 m²",text:"Mobilier moderne"},{icon:"👨‍👩‍👧‍👦",title:"Famille",text:"Jusqu'à 6 personnes"}]},
-    photos:["https://www.zeitunalodge.it/wp-content/uploads/2025/12/20251202_141425-scaled.jpg","https://www.zeitunalodge.it/wp-content/uploads/2025/06/20240612_142204-scaled.jpg","https://www.zeitunalodge.it/wp-content/uploads/2025/06/20250504_120427-scaled.jpg","https://www.zeitunalodge.it/wp-content/uploads/2025/06/20250504_115832-scaled.jpg"]},
-  cellina:{name:"Casa Cellina",size:"65 m²",guests:{it:"Fino a 6 ospiti",en:"Up to 6 guests",fr:"Jusqu'à 6 personnes"},heroImg:"https://www.zeitunalodge.it/wp-content/uploads/2025/06/20240615_104417-scaled.jpg",
+    photos:["images/20251202_141425-scaled.jpg","images/20251202_141004-scaled.jpg","images/20251202_135136-scaled.jpg","images/20251202_135014-scaled.jpg","images/camera_carolea_zeituna_lodge.jpg","images/20250402_130714-scaled.jpg","images/20250402_130732-scaled.jpg","images/20250402_130845-scaled.jpg"]},
+  cellina:{name:"Casa Cellina",size:"65 m²",guests:{it:"Fino a 6 ospiti",en:"Up to 6 guests",fr:"Jusqu'à 6 personnes"},heroImg:"images/20240615_104417-scaled.jpg",
     desc:{it:"Casa Cellina è la più spaziosa con 65mq su un unico piano. Camera matrimoniale con armadio e bagno con doccia. Seconda stanza con letto a castello e bagno dedicato, ideale per famiglie. Sala pranzo e cucina in ambiente versatile. Divano letto disponibile. Veranda solarium con tavolo, sedie e gazebo. Accesso alla vasca idromassaggio nell'uliveto e pista bike cross.",en:"Casa Cellina is the most spacious at 65sqm on a single floor. Double bedroom with wardrobe and en-suite bathroom. Second room with bunk bed and dedicated bathroom, ideal for families. Dining and kitchen in a versatile space. Sofa bed available. Solarium veranda with table, chairs and gazebo. Access to hot tub in the olive grove and bike cross track.",fr:"Casa Cellina est la plus spacieuse avec 65m² de plain-pied. Chambre double avec armoire et salle de bain. Seconde chambre avec lits superposés et salle de bain dédiée, idéale pour les familles. Coin repas et cuisine en espace polyvalent. Canapé-lit disponible. Véranda solarium avec table, chaises et gazebo. Accès au jacuzzi et à la piste de bike cross."},
     amenities:{it:["Wi-Fi","Parcheggio","Cucina attrezzata","Forno microonde","Bollitore","Caffettiera","1 Camera matrimoniale","1 Camera letti a castello","1 Divano letto","2 Bagni con doccia","TV","Ampia terrazza con gazebo"],en:["Wi-Fi","Parking","Equipped kitchen","Microwave","Kettle","Coffee maker","1 Double bedroom","1 Bunk bed room","1 Sofa bed","2 Bathrooms w/ shower","TV","Large terrace with gazebo"],fr:["Wi-Fi","Parking","Cuisine équipée","Micro-ondes","Bouilloire","Cafetière","1 Chambre double","1 Chambre lits superposés","1 Canapé-lit","2 SdB avec douche","TV","Grande terrasse avec gazebo"]},
     highlights:{it:[{icon:"📐",title:"65 m²",text:"La più spaziosa"},{icon:"🚿",title:"2 Bagni",text:"Bagni dedicati"},{icon:"☂️",title:"Gazebo",text:"Veranda attrezzata"}],en:[{icon:"📐",title:"65 m²",text:"Most spacious"},{icon:"🚿",title:"2 Bathrooms",text:"Dedicated bathrooms"},{icon:"☂️",title:"Gazebo",text:"Equipped veranda"}],fr:[{icon:"📐",title:"65 m²",text:"La plus spacieuse"},{icon:"🚿",title:"2 SdB",text:"Salles de bain dédiées"},{icon:"☂️",title:"Gazebo",text:"Véranda équipée"}]},
-    photos:["https://www.zeitunalodge.it/wp-content/uploads/2025/06/20240615_104417-scaled.jpg","https://www.zeitunalodge.it/wp-content/gallery/camera-cellina/20240612_155214.jpg","https://www.zeitunalodge.it/wp-content/uploads/2025/06/20230621_155745-scaled.jpg","https://www.zeitunalodge.it/wp-content/uploads/2025/06/20231009_175808-scaled.jpg"]},
-  olea:{name:"Casa Olea",size:"35 m²",guests:{it:"Fino a 4 ospiti",en:"Up to 4 guests",fr:"Jusqu'à 4 personnes"},heroImg:"https://www.zeitunalodge.it/wp-content/uploads/2025/12/MRZ_6236.jpg",
+    photos:["images/20240615_104417-scaled.jpg","images/MRZ_6139-scaled.jpg","images/MRZ_6146-scaled.jpg","images/MRZ_6150-scaled0.jpg","images/20240612_155214-scaled.jpg","images/20240612_155409-scaled.jpg","images/20240612_155447-scaled.jpg","images/20230621_155745-scaled.jpg"]},
+  olea:{name:"Casa Olea",size:"35 m²",guests:{it:"Fino a 4 ospiti",en:"Up to 4 guests",fr:"Jusqu'à 4 personnes"},heroImg:"images/MRZ_6236-scaled.jpg",
     desc:{it:"Casa Olea offre 35mq su un unico piano con camera matrimoniale, armadio e cassettiera. Bagno con doccia. Sala pranzo e cucina in ambiente versatile. Divano letto con supplemento. Accesso libero alla vasca idromassaggio nell'uliveto e pista bike cross con bici fornite. Animali di piccola taglia ammessi.",en:"Casa Olea offers 35sqm on a single floor with double bedroom, wardrobe and drawers. Bathroom with shower. Dining and kitchen in one versatile space. Sofa bed available with supplement. Free access to outdoor hot tub in the olive grove and bike cross track. Small pets welcome.",fr:"Casa Olea offre 35m² de plain-pied avec chambre double, armoire et commode. Salle de bain avec douche. Coin repas et cuisine polyvalent. Canapé-lit avec supplément. Accès libre au jacuzzi dans l'oliveraie et piste de bike cross. Petits animaux acceptés."},
     amenities:{it:["Wi-Fi","Parcheggio","Cucina attrezzata","Forno microonde","Tostapane","Caffettiera","Bollitore","1 Camera matrimoniale","1 Divano letto","1 Bagno con doccia","TV"],en:["Wi-Fi","Parking","Equipped kitchen","Microwave","Toaster","Coffee maker","Kettle","1 Double bedroom","1 Sofa bed","1 Bathroom w/ shower","TV"],fr:["Wi-Fi","Parking","Cuisine équipée","Micro-ondes","Grille-pain","Cafetière","Bouilloire","1 Chambre double","1 Canapé-lit","1 SdB avec douche","TV"]},
     highlights:{it:[{icon:"🫒",title:"Tra gli Ulivi",text:"Immersa nell'uliveto"},{icon:"📐",title:"35 m²",text:"Piano unico"},{icon:"🐕",title:"Pet Friendly",text:"Cani < 10kg"}],en:[{icon:"🫒",title:"Among Olives",text:"Nestled in the grove"},{icon:"📐",title:"35 m²",text:"Single floor"},{icon:"🐕",title:"Pet Friendly",text:"Dogs < 10kg"}],fr:[{icon:"🫒",title:"Parmi les Oliviers",text:"Dans l'oliveraie"},{icon:"📐",title:"35 m²",text:"Plain-pied"},{icon:"🐕",title:"Pet Friendly",text:"Chiens < 10kg"}]},
-    photos:["https://www.zeitunalodge.it/wp-content/uploads/2025/12/MRZ_6236.jpg","https://www.zeitunalodge.it/wp-content/gallery/casa-olea/20240612_142304.jpg","https://www.zeitunalodge.it/wp-content/uploads/2025/06/20240612_142204-scaled.jpg","https://www.zeitunalodge.it/wp-content/uploads/2025/06/20250504_120427-scaled.jpg"]}
+    photos:["images/MRZ_6236-scaled.jpg","images/MRZ_6201-scaled.jpg","images/MRZ_6217-scaled.jpg","images/MRZ_6217-1-scaled.jpg","images/MZ6_9543-scaled.jpg","images/20240612_142304-scaled.jpg","images/20240612_142517-scaled.jpg"]}
 };
 
 // ══════════════════════════════════════════
@@ -682,6 +743,18 @@ window.addEventListener('scroll',()=>header.classList.toggle('scrolled',window.s
 const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target)}})},{threshold:.15,rootMargin:'0px 0px -40px 0px'});
 document.querySelectorAll('.anim').forEach(el=>observer.observe(el));
 document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('active')));
+
+// ══════════════════════════════════════════
+// HERO SLIDESHOW
+// ══════════════════════════════════════════
+const heroSlides=document.querySelectorAll('.hero-slide');
+const heroDots=document.getElementById('heroDots');
+let heroIndex=0, heroTimer;
+heroSlides.forEach((_,i)=>{const dot=document.createElement('button');dot.className='hero-dot'+(i===0?' active':'');dot.onclick=()=>{heroIndex=i;updateHero();resetHeroTimer()};heroDots.appendChild(dot)});
+function updateHero(){heroSlides.forEach((s,i)=>s.classList.toggle('active',i===heroIndex));heroDots.querySelectorAll('.hero-dot').forEach((d,i)=>d.classList.toggle('active',i===heroIndex))}
+function nextHeroSlide(){heroIndex=(heroIndex+1)%heroSlides.length;updateHero()}
+function resetHeroTimer(){clearInterval(heroTimer);heroTimer=setInterval(nextHeroSlide,5000)}
+resetHeroTimer();
 </script>
 </body>
 </html>
